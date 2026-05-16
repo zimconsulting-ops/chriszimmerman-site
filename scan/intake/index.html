@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BI Scan Intake — Chris Zimmerman</title>
+<meta name="description" content="Start your Business Intelligence Scan. Eight fields, five minutes. The 72-hour clock starts after Chris confirms scope.">
+<link rel="canonical" href="https://chriszimmerman.org/scan/intake">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:title" content="BI Scan Intake — Chris Zimmerman">
+<meta property="og:description" content="Start your scan. Eight fields, five minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/scan/intake">
+<meta property="og:image" content="https://chriszimmerman.org/og-scan.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BI Scan Intake">
+<meta name="twitter:description" content="Eight fields. Five minutes. 72-hour clock starts after scope confirm.">
+<meta name="twitter:image" content="https://chriszimmerman.org/og-scan.png">
+
+<!-- Plausible (tagged events) -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --bg3: #1a2030;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --orange: #E8651A;
+  --green: #4caf7a;
+  --red: #d96868;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 48px 20px 60px;
+}
+
+.container { width: 100%; max-width: 720px; margin: 0 auto; }
+
+/* TOP BAR */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 720px; margin: 0 auto 40px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: 0.06em; color: var(--txt3);
+}
+.topbar a { color: var(--txt2); text-decoration: none; }
+.topbar a:hover { color: var(--gold); }
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 40px;
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(30px, 5vw, 44px); line-height: 1.1;
+  color: var(--white); margin-bottom: 14px; letter-spacing: -0.01em;
+}
+.lede {
+  color: var(--txt2); font-size: 15px; max-width: 480px;
+  margin: 0 auto; line-height: 1.65;
+}
+
+/* FORM */
+form { width: 100%; }
+
+.field-group { margin-bottom: 26px; }
+.field-group.required label::after {
+  content: ' *';
+  color: var(--gold);
+}
+
+label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--txt1); margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.help {
+  display: block;
+  color: var(--txt3); font-size: 13px;
+  margin-bottom: 10px; line-height: 1.5;
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: normal; text-transform: none;
+  font-weight: 300;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  background: var(--bg2);
+  color: var(--txt1);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 12px 14px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--bg3);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 88px;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 38px;
+}
+
+/* RUSH BLOCK */
+.rush-block {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 18px 20px;
+  margin-bottom: 26px;
+}
+.rush-checkbox-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  cursor: pointer;
+}
+.rush-checkbox-row input[type="checkbox"] {
+  margin-top: 4px;
+  width: 16px; height: 16px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.rush-checkbox-row .rush-text {
+  flex: 1;
+  color: var(--txt1); font-size: 14.5px;
+  line-height: 1.55;
+}
+.rush-checkbox-row .rush-fee {
+  color: var(--gold); font-weight: 500;
+}
+.rush-deadline-row {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.rush-deadline-row label {
+  margin-bottom: 6px;
+}
+
+/* HONEYPOT */
+.bot-field {
+  position: absolute; left: -9999px;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+
+/* SUBMIT */
+.submit-block {
+  text-align: center;
+  padding: 32px 0 24px;
+  margin-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--white);
+  font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 14px 32px; border-radius: 2px; text-decoration: none;
+  transition: background 0.15s, opacity 0.15s; border: none; cursor: pointer;
+}
+.btn-gold:hover { background: var(--gold-light); color: var(--bg); }
+.btn-gold:disabled { opacity: 0.5; cursor: not-allowed; }
+.submit-note {
+  margin-top: 14px; font-size: 12px; color: var(--txt3);
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em;
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin: 28px 0 22px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-divider::before {
+  content: ''; width: 20px; height: 1px; background: var(--gold);
+  display: block; flex-shrink: 0;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center; color: var(--txt3); font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
+  padding-top: 36px; margin-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.footer img { display: block; height: 48px; width: auto; margin: 0 auto 8px; filter: invert(0.85); }
+.footer a { color: var(--txt2); text-decoration: none; }
+.footer a:hover { color: var(--gold); }
+.footer .row { margin-top: 8px; }
+.footer .socials {
+  margin-top: 12px;
+  display: flex; gap: 14px; justify-content: center;
+  font-size: 11px;
+}
+.footer .socials a { color: var(--txt2); }
+
+/* MOBILE */
+@media (max-width: 640px) {
+  body { padding: 32px 16px 48px; }
+  .container { max-width: 100%; }
+  h1 { font-size: 30px; }
+  .field-group { margin-bottom: 22px; }
+  input[type="text"], input[type="email"], input[type="date"], textarea, select {
+    font-size: 16px; /* prevents iOS zoom on focus */
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/scan">← Back to BI Scan</a>
+  <span>Updated: April 2026</span>
+</div>
+
+<div class="container">
+
+  <div class="header">
+    <div class="eyebrow">BI Scan · Intake</div>
+    <h1>Start your scan.</h1>
+    <p class="lede">Eight fields. Five minutes. The 72-hour clock starts after I confirm scope.</p>
+  </div>
+
+  <form name="bi-scan-intake"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/scan/thank-you">
+
+    <input type="hidden" name="form-name" value="bi-scan-intake">
+
+    <!-- Honeypot -->
+    <p class="bot-field">
+      <label>Don't fill this out: <input name="bot-field"></label>
+    </p>
+
+    <!-- Hidden attribution fields (hydrated by JS) -->
+    <input type="hidden" name="referrer_url" id="referrer_url">
+    <input type="hidden" name="utm_source" id="utm_source">
+    <input type="hidden" name="utm_medium" id="utm_medium">
+    <input type="hidden" name="utm_campaign" id="utm_campaign">
+
+    <!-- 1. Name -->
+    <div class="field-group required">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" maxlength="100" required>
+    </div>
+
+    <!-- 2. Email -->
+    <div class="field-group required">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+
+    <!-- 3. Company / role -->
+    <div class="field-group required">
+      <label for="company_role">Company / role</label>
+      <span class="help">Solo operator, founder, fractional CFO at company X — whatever frames you.</span>
+      <input type="text" name="company_role" id="company_role" maxlength="200" required>
+    </div>
+
+    <div class="section-divider">The question</div>
+
+    <!-- 4. Question -->
+    <div class="field-group required">
+      <label for="question">The question</label>
+      <span class="help">One sentence. Scoped tight. The tighter the question, the tighter the read.</span>
+      <textarea name="question" id="question" minlength="20" maxlength="500" required></textarea>
+    </div>
+
+    <!-- 5. Decision + deadline -->
+    <div class="field-group required">
+      <label for="decision_and_deadline">The decision this informs + by when</label>
+      <span class="help">What call are you about to make, and when does the answer matter by?</span>
+      <textarea name="decision_and_deadline" id="decision_and_deadline" minlength="20" maxlength="500" required></textarea>
+    </div>
+
+    <!-- 6. Stakes -->
+    <div class="field-group required">
+      <label for="stakes">The stakes</label>
+      <span class="help">Rough dollar amount in play.</span>
+      <select name="stakes" id="stakes" required>
+        <option value="" disabled selected>Select range…</option>
+        <option value="Under $10K">Under $10K</option>
+        <option value="$10-50K">$10K – $50K</option>
+        <option value="$50-250K">$50K – $250K</option>
+        <option value="$250K+">$250K+</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- 7. Already checked -->
+    <div class="field-group required">
+      <label for="already_checked">What you've already checked</label>
+      <span class="help">Sources you've looked at, angles you've ruled out. Saves you buying research you already have.</span>
+      <textarea name="already_checked" id="already_checked" minlength="20" maxlength="1000" required></textarea>
+    </div>
+
+    <!-- 8. Done looks like -->
+    <div class="field-group required">
+      <label for="done_looks_like">What "done" looks like</label>
+      <span class="help">A good answer for you is — go/no-go with three data points? Vendor shortlist ranked by X? Be concrete.</span>
+      <textarea name="done_looks_like" id="done_looks_like" minlength="20" maxlength="500" required></textarea>
+    </div>
+
+    <div class="section-divider">Optional</div>
+
+    <!-- 9. Competitive set -->
+    <div class="field-group">
+      <label for="competitive_set">Competitive or vendor set in mind</label>
+      <span class="help">Specific names already on your list, if any.</span>
+      <input type="text" name="competitive_set" id="competitive_set" maxlength="300">
+    </div>
+
+    <!-- 10. Trusted sources -->
+    <div class="field-group">
+      <label for="trusted_sources">Sources you trust or distrust</label>
+      <span class="help">Analyst firms, industry pubs, outlets you don't want cited.</span>
+      <input type="text" name="trusted_sources" id="trusted_sources" maxlength="300">
+    </div>
+
+    <!-- 11. Rush -->
+    <div class="rush-block">
+      <label class="rush-checkbox-row" for="rush_flag">
+        <input type="checkbox" name="rush_flag" id="rush_flag" value="yes" class="plausible-event-name=bi-scan-intake-rush">
+        <span class="rush-text">
+          I need this faster than 72 hours. <span class="rush-fee">+$250 rush fee</span>, subject to confirmation.
+        </span>
+      </label>
+      <div class="rush-deadline-row" id="rush_deadline_row" hidden>
+        <label for="rush_deadline">Need delivery by</label>
+        <input type="date" name="rush_deadline" id="rush_deadline">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-block">
+      <button type="submit" id="submit-btn" class="btn-gold plausible-event-name=bi-scan-intake-submit">
+        Submit intake →
+      </button>
+      <p class="submit-note">Same-day reply with scope. 72-hour clock starts after confirm.</p>
+    </div>
+  </form>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="/chris-zimmerman-signature.png" alt="Chris Zimmerman signature">
+    <div>Wake County, NC · Solo-operator intelligence</div>
+    <div class="row">© 2026 · <a href="https://chriszimmerman.org">chriszimmerman.org</a></div>
+    <div class="socials">
+      <a href="https://x.com/ChrisZimmerman" target="_blank" rel="noopener">X</a>
+      <a href="https://x.com/EverydayDriver_" target="_blank" rel="noopener">M·E·D</a>
+      <a href="https://x.com/ZBD_OS" target="_blank" rel="noopener">O·S</a>
+      <a href="https://www.linkedin.com/in/chris-zimmerman-8981b710/" target="_blank" rel="noopener">in</a>
+      <a href="mailto:ops@zbdos.com">ops@zbdos.com</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    // Hydrate hidden attribution fields
+    var ref = document.getElementById('referrer_url');
+    if (ref) ref.value = document.referrer || 'direct';
+
+    var params = new URLSearchParams(window.location.search);
+    ['utm_source','utm_medium','utm_campaign'].forEach(function (k) {
+      var el = document.getElementById(k);
+      if (el) el.value = params.get(k) || '';
+    });
+
+    // Conditional rush deadline picker
+    var rushFlag = document.getElementById('rush_flag');
+    var rushRow = document.getElementById('rush_deadline_row');
+    if (rushFlag && rushRow) {
+      rushFlag.addEventListener('change', function (e) {
+        rushRow.hidden = !e.target.checked;
+      });
+    }
+
+    // Disable submit button on submit to prevent double-submit
+    var form = document.querySelector('form[name="bi-scan-intake"]');
+    var btn = document.getElementById('submit-btn');
+    if (form && btn) {
+      form.addEventListener('submit', function () {
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+      });
+    }
+
+    // Plausible page-view event
+    if (window.plausible) window.plausible('bi-scan-intake-view');
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intake received — BI Scan — Chris Zimmerman</title>
+<meta name="description" content="Your BI Scan intake landed. Reply within 24 hours to confirm scope.">
+<link rel="canonical" href="https://chriszimmerman.org/scan/thank-you">
+<meta name="robots" content="noindex">
+
+<!-- Plausible (tagged events) -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --green: #4caf7a;
+  --white: #ffffff;
+}
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 48px 20px 60px;
+}
+
+.container { width: 100%; max-width: 640px; margin: 0 auto; }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 640px; margin: 0 auto 40px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: 0.06em; color: var(--txt3);
+}
+.topbar a { color: var(--txt2); text-decoration: none; }
+.topbar a:hover { color: var(--gold); }
+
+.confirm-block {
+  text-align: center;
+  padding: 56px 32px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--green);
+  border-radius: 4px;
+  margin-bottom: 36px;
+}
+.checkmark {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--green);
+  font-size: 36px;
+  margin-bottom: 18px;
+  line-height: 1;
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(32px, 5vw, 44px); line-height: 1.15;
+  color: var(--white); margin-bottom: 14px; letter-spacing: -0.01em;
+}
+.lede {
+  color: var(--txt2); font-size: 15px;
+  max-width: 480px; margin: 0 auto;
+  line-height: 1.65;
+}
+
+.body-block {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 32px 36px;
+  margin-bottom: 28px;
+}
+.body-block p {
+  color: var(--txt2); font-size: 15px;
+  margin-bottom: 16px; line-height: 1.7;
+}
+.body-block p:last-child { margin-bottom: 0; }
+.body-block strong { color: var(--txt1); font-weight: 500; }
+.body-block code {
+  background: var(--bg);
+  color: var(--gold);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+}
+.body-block a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold);
+  transition: color 0.15s;
+}
+.body-block a:hover { color: var(--gold-light); }
+
+/* FOOTER */
+.footer {
+  text-align: center; color: var(--txt3); font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
+  padding-top: 32px; margin-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.footer img { display: block; height: 48px; width: auto; margin: 0 auto 8px; filter: invert(0.85); }
+.footer a { color: var(--txt2); text-decoration: none; }
+.footer a:hover { color: var(--gold); }
+.footer .row { margin-top: 8px; }
+.footer .socials {
+  margin-top: 12px;
+  display: flex; gap: 14px; justify-content: center;
+  font-size: 11px;
+}
+.footer .socials a { color: var(--txt2); }
+
+@media (max-width: 640px) {
+  body { padding: 32px 16px 48px; }
+  .confirm-block { padding: 40px 22px; }
+  .body-block { padding: 26px 24px; }
+  h1 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/scan">← Back to BI Scan</a>
+  <span>Updated: April 2026</span>
+</div>
+
+<div class="container">
+
+  <div class="confirm-block">
+    <div class="checkmark">✓</div>
+    <div class="eyebrow">Intake received</div>
+    <h1>Your scan is queued.</h1>
+    <p class="lede">I'll reply within 24 hours to confirm scope. The 72-hour clock starts after we lock the angle.</p>
+  </div>
+
+  <div class="body-block">
+    <p><strong>What happens next.</strong> I read your intake, scope-check the question, and reply same-day or within 24 hours. If the question is too broad, I tell you. If it's a good fit, I lock the angle and send a Stripe invoice — $500 standard, $750 if you flagged rush. The 72-hour delivery clock starts when payment clears.</p>
+    <p><strong>Check your email.</strong> A confirmation auto-sends to the address you provided. If you don't see it within 2 hours (check spam first), email <a href="mailto:ops@zbdos.com">ops@zbdos.com</a> directly with subject <code>BI Scan intake follow-up</code>.</p>
+    <p><strong>While you wait.</strong> See what I'm building at <a href="/launching">chriszimmerman.org/launching</a>, or re-read the <a href="/scan">BI Scan brief</a>.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="/chris-zimmerman-signature.png" alt="Chris Zimmerman signature">
+    <div>Wake County, NC · Solo-operator intelligence</div>
+    <div class="row">© 2026 · <a href="https://chriszimmerman.org">chriszimmerman.org</a></div>
+    <div class="socials">
+      <a href="https://x.com/ChrisZimmerman" target="_blank" rel="noopener">X</a>
+      <a href="https://x.com/EverydayDriver_" target="_blank" rel="noopener">M·E·D</a>
+      <a href="https://x.com/ZBD_OS" target="_blank" rel="noopener">O·S</a>
+      <a href="https://www.linkedin.com/in/chris-zimmerman-8981b710/" target="_blank" rel="noopener">in</a>
+      <a href="mailto:ops@zbdos.com">ops@zbdos.com</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  if (window.plausible) window.plausible('bi-scan-intake-success');
+</script>
+
+</body>
+</html>

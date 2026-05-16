@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Intelligence Scan — Chris Zimmerman</title>
+<meta name="description" content="A sourced research brief on a specific strategic question. 72-hour delivery. $500 entry tier. Built for solo operators who need one honest read.">
+<link rel="canonical" href="https://chriszimmerman.org/scan">
+
+<!-- Open Graph / Twitter -->
+<!-- NOTE: /og-scan.png is a placeholder. Chris: generate this OG image (1200x630) before launch. -->
+<meta property="og:title" content="Business Intelligence Scan — Chris Zimmerman">
+<meta property="og:description" content="One sourced read on your strategic question. 72-hour turnaround. $500 entry tier.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/scan">
+<meta property="og:image" content="https://chriszimmerman.org/og-scan.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Business Intelligence Scan">
+<meta name="twitter:description" content="One sourced read. Seventy-two hours. $500 entry.">
+<meta name="twitter:image" content="https://chriszimmerman.org/og-scan.png">
+
+<!-- Plausible (tagged events) -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --bg3: #1a2030;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --orange: #E8651A;
+  --green: #4caf7a;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 48px 20px 60px;
+}
+
+.container { width: 100%; max-width: 720px; margin: 0 auto; }
+
+/* TOP BAR */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 720px; margin: 0 auto 40px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: 0.06em; color: var(--txt3);
+}
+.topbar a { color: var(--txt2); text-decoration: none; }
+.topbar a:hover { color: var(--gold); }
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 44px;
+}
+.avatar {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--bg2); border: 2px solid var(--rule);
+  margin: 0 auto 18px; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(32px, 5.5vw, 48px); line-height: 1.1;
+  color: var(--white); margin-bottom: 14px; letter-spacing: -0.01em;
+}
+h1 em { color: var(--gold); font-style: italic; }
+.bio {
+  color: var(--txt2); font-size: 15px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.65;
+}
+.meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 0.1em; color: var(--txt3);
+}
+
+/* SECTION LABELS */
+.section-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; width: 20px; height: 1px; background: var(--gold);
+  display: block; flex-shrink: 0;
+}
+
+.section { margin-bottom: 52px; }
+
+h2 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: 28px; color: var(--white);
+  margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.2;
+}
+.section p {
+  color: var(--txt2); font-size: 15px; line-height: 1.7;
+  margin-bottom: 14px;
+}
+.section p strong { color: var(--txt1); font-weight: 500; }
+
+/* GENERIC CARD */
+.card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 28px 30px;
+}
+.card + .card { margin-top: 18px; }
+
+.card ul { list-style: none; }
+.card li {
+  color: var(--txt2); font-size: 14px;
+  padding: 5px 0; display: flex; align-items: flex-start; gap: 10px;
+  line-height: 1.6;
+}
+.card li::before {
+  content: '→'; color: var(--gold); font-weight: 500;
+  margin-top: 2px; flex-shrink: 0;
+}
+
+/* HOW IT WORKS — STEPS */
+.steps { list-style: none; counter-reset: step; }
+.steps li {
+  counter-increment: step;
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold); border-radius: 2px;
+  padding: 18px 22px; margin-bottom: 10px;
+  display: flex; gap: 18px; align-items: flex-start;
+}
+.steps li::before {
+  content: 'Step ' counter(step);
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); flex-shrink: 0; min-width: 62px;
+  padding-top: 3px;
+}
+.steps .step-body { flex: 1; }
+.steps .step-title {
+  color: var(--txt1); font-size: 15px; font-weight: 500;
+  margin-bottom: 3px;
+}
+.steps .step-desc {
+  color: var(--txt3); font-size: 13px; line-height: 1.55;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.01em;
+}
+
+/* EXAMPLE CARDS */
+.example-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 24px 28px;
+  margin-bottom: 14px;
+  display: block; color: inherit;
+}
+.example-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.example-title {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: 20px; color: var(--white);
+  letter-spacing: -0.01em; line-height: 1.3;
+  margin-bottom: 10px;
+}
+.example-body {
+  color: var(--txt2); font-size: 14px; line-height: 1.65;
+}
+.example-body p { margin-bottom: 8px; }
+.example-body .tag {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  color: var(--txt3); letter-spacing: 0.05em;
+}
+
+/* PRICING */
+.pricing-block {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px; padding: 32px 30px;
+  text-align: center;
+}
+.pricing-tier {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.pricing-amount {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: 56px; color: var(--white);
+  line-height: 1; letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.pricing-note {
+  color: var(--txt2); font-size: 14px; margin-bottom: 18px;
+}
+.pricing-tiers {
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  color: var(--txt3); letter-spacing: 0.02em;
+  padding-top: 16px; margin-top: 18px;
+  border-top: 1px solid var(--rule); line-height: 1.7;
+}
+
+/* FIT GRID */
+.fit-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+@media (max-width: 640px) { .fit-grid { grid-template-columns: 1fr; } }
+.fit-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 22px 24px;
+}
+.fit-card.for { border-left: 3px solid var(--green); }
+.fit-card.not { border-left: 3px solid var(--orange); }
+.fit-card h3 {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.fit-card.for h3 { color: var(--green); }
+.fit-card.not h3 { color: var(--orange); }
+.fit-card ul { list-style: none; }
+.fit-card li {
+  font-size: 13.5px; color: var(--txt2);
+  padding: 4px 0; line-height: 1.55;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.fit-card.for li::before { content: '+'; color: var(--green); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+.fit-card.not li::before { content: '−'; color: var(--orange); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+
+/* CTA */
+.cta-block {
+  text-align: center; padding: 40px 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  margin-bottom: 44px;
+}
+.cta-block h2 { margin-bottom: 10px; }
+.cta-block p {
+  color: var(--txt2); font-size: 14.5px;
+  max-width: 460px; margin: 0 auto 22px;
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--white);
+  font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 2px; text-decoration: none;
+  transition: background 0.15s; border: none; cursor: pointer;
+}
+.btn-gold:hover { background: var(--gold-light); color: var(--bg); }
+.cta-note {
+  margin-top: 16px; font-size: 12px; color: var(--txt3);
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.02em;
+}
+
+/* ABOUT */
+.about-block {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 28px 30px;
+}
+.about-block h2 { font-size: 22px; margin-bottom: 12px; }
+.about-block p { font-size: 14.5px; color: var(--txt2); line-height: 1.7; }
+
+/* FOOTER */
+.footer {
+  text-align: center; color: var(--txt3); font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
+  padding-top: 28px;
+}
+.footer .signature {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 22px; color: var(--gold);
+  margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.footer a { color: var(--txt2); text-decoration: none; }
+.footer a:hover { color: var(--gold); }
+.footer .row { margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://chriszimmerman.org">← chriszimmerman.org</a>
+  <span>Updated: April 2026</span>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="avatar"><img src="/headshot.jpg" alt="Chris Zimmerman" width="84" height="84"></div>
+    <div class="eyebrow">Business Intelligence Scan</div>
+    <h1>One sourced read. <em>Seventy-two hours.</em></h1>
+    <p class="bio">A research brief on one strategic question. Perplexity-powered deep scan, operator-level synthesis, cited sources. Built for solo operators, founders, and fractional execs who need one honest read before making a call.</p>
+    <p class="meta">Wake County, NC · Solo-operator intelligence</p>
+  </div>
+
+  <!-- WHAT IT IS -->
+  <div class="section">
+    <div class="section-label">What it is</div>
+    <h2>The scan you'd run if you had the time.</h2>
+    <p>You're about to make a $10K+ decision and every source gives you marketing disguised as research. Vendor blogs ranked for intent. Analyst PDFs behind a $4K paywall. AI summaries that hallucinate half the citations.</p>
+    <p>This is the opposite. One question, scoped tight. Sourced research brief, 5-8 pages. Delivered as a PDF inside 72 hours. The deliverable you'd assemble yourself if you weren't already buried.</p>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <div class="section">
+    <div class="section-label">What you get</div>
+    <div class="card">
+      <ul>
+        <li>Sourced PDF, 5-8 pages, tight formatting</li>
+        <li>72-hour turnaround from intake confirmation</li>
+        <li>Perplexity-powered research with operator-level synthesis on top</li>
+        <li>Cited sources you can actually click. No hallucinated links.</li>
+        <li>Decision framework overlay, not a summary dump</li>
+        <li>One follow-up email thread for clarifications after delivery</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-label">How it works</div>
+    <ol class="steps">
+      <li>
+        <div class="step-body">
+          <div class="step-title">You send the question</div>
+          <div class="step-desc">Intake form or direct email. One strategic question, scoped as tight as you can get it.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <div class="step-title">I scope and confirm the deliverable</div>
+          <div class="step-desc">Same-day reply. If the question is too broad, I tell you. If it's a good fit, I lock the angle and the 72-hour clock starts.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <div class="step-title">Research and synthesis</div>
+          <div class="step-desc">Roughly 48 hours. Deep scan across sources, cross-check on claims, synthesis into a decision framework you can act on.</div>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <div class="step-title">PDF delivered and follow-up thread opens</div>
+          <div class="step-desc">72 hours total. You get the sourced PDF plus a clarification thread for any question that surfaces after you've read it.</div>
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- EXAMPLES -->
+  <div class="section">
+    <div class="section-label">Example scans</div>
+    <div class="example-card">
+      <div class="example-label">Example A · Market entry</div>
+      <div class="example-title">Wake County auto operator network — is the referral model viable?</div>
+      <div class="example-body">
+        <p>Answered: whether a shop-side operator network built on free installs plus referral fees holds up against local competitors, reimbursement math, and shop-owner objections.</p>
+        <p>Key insights delivered: three competitor models compared, realistic fee-per-referral range for the market, two objections the founder hadn't priced in, and a go/no-go framework based on pilot-shop conversion.</p>
+        <p class="tag">Scope: local market · competitor set · unit economics</p>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-label">Example B · Tool stack audit</div>
+      <div class="example-title">Solo operator running three-plus AI-first workflows — where's the leverage?</div>
+      <div class="example-body">
+        <p>Positioning angle: cut tool sprawl without breaking the production chain. The operator was running Claude, Perplexity, three automation layers, and starting to lose track of which tool owned which step.</p>
+        <p>Decision framework delivered: a four-axis grid (cost, switching risk, output quality, time-to-result) applied to every tool in the stack, plus two consolidation plays worth testing and one workflow to leave alone.</p>
+        <p class="tag">Scope: tool stack · workflow mapping · consolidation paths</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <div class="section-label">Pricing</div>
+    <div class="pricing-block">
+      <div class="pricing-tier">Entry tier · single scan</div>
+      <div class="pricing-amount">$500</div>
+      <p class="pricing-note">One question. One sourced PDF. 72-hour delivery.</p>
+      <div class="pricing-tiers">
+        Mid-tier (multi-angle, broader scope): $1,000<br>
+        High-ticket (multi-market or strategic-depth scans): $1,500<br>
+        Email to scope anything above the entry tier.
+      </div>
+    </div>
+  </div>
+
+  <!-- INTAKE -->
+  <div class="section">
+    <div class="section-label">What I need from you</div>
+    <p style="color: var(--txt2); font-size: 15px; line-height: 1.7; margin-bottom: 18px;">Lock these before the 72-hour clock starts. The tighter the intake, the tighter the read. You'll fill these on the next page when you start your scan.</p>
+    <div class="card">
+      <p style="color: var(--gold); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px;">Required</p>
+      <ul>
+        <li>The question — one sentence, scoped as tight as you can get it</li>
+        <li>The decision this informs — what call are you about to make, and by when</li>
+        <li>The stakes — rough dollar amount in play ($10K range, $100K range, etc.)</li>
+        <li>Your context — role (solo operator / fractional exec / founder), industry, rough company size</li>
+        <li>What you've already checked — sources looked at, angles ruled out. Saves you buying research you already have.</li>
+        <li>What "done" looks like — a good answer for you is…? (go/no-go with three data points / vendor shortlist ranked by X / etc.)</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top: 14px;">
+      <p style="color: var(--txt3); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px;">Helpful · optional</p>
+      <ul>
+        <li>Competitive or vendor set already in your head</li>
+        <li>Sources you trust or distrust (analyst firms, industry pubs, outlets you don't want cited)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FIT -->
+  <div class="section">
+    <div class="section-label">Who this is for</div>
+    <div class="fit-grid">
+      <div class="fit-card for">
+        <h3>Good fit</h3>
+        <ul>
+          <li>Solo operators pre-launch on a new offer</li>
+          <li>Fractional execs scoping a project inside a new client</li>
+          <li>Founders about to make a hiring, pricing, or market call</li>
+          <li>Consultants doing pre-pitch research on a prospect</li>
+          <li>Anyone who needs one honest read before spending real money</li>
+        </ul>
+      </div>
+      <div class="fit-card not">
+        <h3>Not a fit</h3>
+        <ul>
+          <li>Academic research or literature reviews</li>
+          <li>Tactical SEO audits or keyword reports</li>
+          <li>"Do my homework" requests with no defined question</li>
+          <li>Legal, medical, or regulated-advice scopes</li>
+          <li>Anything that needs ten scans bundled as one</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="section-label" style="justify-content: center;">Book the scan</div>
+    <h2>Send the question. I'll come back with the scope.</h2>
+    <p>Same-day reply. If it's a fit, the 72-hour clock starts once we lock the angle.</p>
+    <a href="/scan/intake" class="btn-gold plausible-event-name=bi-scan-cta-click">Start your scan →</a>
+    <p class="cta-note" style="margin-top: 14px;">Eight fields, five minutes. Or email <a href="mailto:ops@zbdos.com" style="color: var(--gold); font-weight: 500;">ops@zbdos.com</a> directly if you'd rather.</p>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-label">About Chris</div>
+    <div class="about-block">
+      <h2>Why me, and why this scan.</h2>
+      <p>I run five ventures from one vault. I do this research every week for my own decisions — market entries, pricing calls, tool stack audits, competitor reads. The scan puts that same process on your desk instead of mine. No agency overhead. No three-week turnaround. One operator, one sourced read, seventy-two hours.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="/chris-zimmerman-signature.png" alt="Chris Zimmerman signature" style="display: block; height: 48px; width: auto; margin: 0 auto 8px; filter: invert(0.85);">
+    <div>Wake County, NC · Solo-operator intelligence</div>
+    <div class="row">© 2026 · <a href="https://chriszimmerman.org">chriszimmerman.org</a></div>
+  </div>
+
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (window.plausible) window.plausible('scan-view');
+  });
+</script>
+
+</body>
+</html>

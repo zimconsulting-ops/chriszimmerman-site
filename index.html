@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chris Zimmerman — Operator. Mechanic. Builder.</title>
+<meta name="description" content="Army vet. 20-year mechanic. Solo operator building AI-powered ventures from Wake County, NC. My Everyday Driver, Operator Stack, and more.">
+<meta property="og:title" content="Chris Zimmerman">
+<meta property="og:description" content="Operator. Mechanic. Builder. Army vet building AI-powered ventures from Wake County, NC.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://chriszimmerman.org/headshot.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chris Zimmerman">
+<meta name="twitter:description" content="Operator. Mechanic. Builder.">
+<meta name="twitter:image" content="https://chriszimmerman.org/headshot.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --orange: #E8651A;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 60px;
+}
+
+.container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* AVATAR */
+.avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 3px solid var(--rule);
+  margin: 0 auto 20px;
+  overflow: hidden;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+
+/* NAME + BIO */
+.name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.8rem;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.tagline {
+  text-align: center;
+  color: var(--txt2);
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.location {
+  text-align: center;
+  color: var(--txt3);
+  font-size: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+}
+
+/* ACCENT BAR */
+.accent {
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 32px;
+  border-radius: 2px;
+}
+
+/* SECTION LABELS */
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt3);
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+
+/* LINK CARDS */
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: var(--txt1);
+  transition: border-color 0.2s, transform 0.15s;
+}
+.link-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+.link-icon {
+  font-size: 1.4rem;
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.link-text {
+  flex: 1;
+}
+.link-title {
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--txt1);
+  margin-bottom: 2px;
+}
+.link-desc {
+  font-size: 0.78rem;
+  color: var(--txt3);
+  line-height: 1.4;
+}
+.link-arrow {
+  color: var(--txt3);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+.link-card:hover .link-arrow { color: var(--gold); }
+
+/* VENTURE ACCENT */
+.link-card[data-venture="med"] { border-left: 3px solid var(--orange); }
+.link-card[data-venture="os"] { border-left: 3px solid var(--gold); }
+.link-card[data-venture="personal"] { border-left: 3px solid var(--txt3); }
+
+/* SOCIAL ROW */
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--txt2);
+  font-size: 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  transition: border-color 0.2s, color 0.2s;
+}
+.social-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--txt3);
+  font-size: 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* SPACER */
+.spacer { height: 28px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- AVATAR -->
+  <div class="avatar"><img src="/headshot.jpg" alt="Chris Zimmerman" width="112" height="112"></div>
+
+  <!-- NAME -->
+  <h1 class="name">Chris Zimmerman</h1>
+  <p class="tagline">Operator. Mechanic. Builder.</p>
+  <p class="location">Wake County, NC</p>
+
+  <div class="accent"></div>
+
+  <!-- BIO BLURB -->
+  <p style="text-align:center; color:var(--txt2); font-size:0.88rem; line-height:1.65; margin-bottom:32px; max-width:380px; margin-left:auto; margin-right:auto;">
+    Army vet. 20 years in automotive — mechanic, shop manager, service operations. Now building AI-powered tools and businesses as a solo operator. Multiple ventures, one vault, shipping daily.
+  </p>
+
+  <!-- RIGHT NOW -->
+  <div class="section-label">Right Now</div>
+
+  <a href="/launching" rel="noopener" class="link-card" data-venture="personal">
+    <span class="link-icon">🛠️</span>
+    <div class="link-text">
+      <div class="link-title">What I'm Building Right Now</div>
+      <div class="link-desc">A running view of active ventures, in-progress projects, and what ships next. Updated as I go.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- VENTURES -->
+  <div class="section-label">Ventures</div>
+
+  <a href="https://myeverydaydriver.com" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">🔧</span>
+    <div class="link-text">
+      <div class="link-title">My Everyday Driver</div>
+      <div class="link-desc">The trusted second opinion for everyday drivers. Free tools, advisory, honest guidance.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://zbdos.com" target="_blank" rel="noopener" class="link-card" data-venture="os">
+    <span class="link-icon">⚙️</span>
+    <div class="link-text">
+      <div class="link-title">Operator Stack</div>
+      <div class="link-desc">AI operating system for serious solo operators. One vault, one system, every session builds on the last.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://myeverydaydriver.com/advisory" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">📋</span>
+    <div class="link-text">
+      <div class="link-title">Book an Advisory Session (MED)</div>
+      <div class="link-desc">Repair decisions, purchase guidance, estimate review. Starting at $49.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="/scan" rel="noopener" class="link-card" data-venture="personal">
+    <span class="link-icon">🔍</span>
+    <div class="link-text">
+      <div class="link-title">Business Intelligence Scan</div>
+      <div class="link-desc">Sourced research on one strategic question. 72-hour delivery. $500 entry, +$250 rush.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- CONTENT -->
+  <div class="section-label">Content</div>
+
+  <a href="https://myeverydaydriver.com/blog" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">📝</span>
+    <div class="link-text">
+      <div class="link-title">MED Blog</div>
+      <div class="link-desc">Repair cost benchmarks, ownership guides, and straight answers.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://zbdos.com/blog/" target="_blank" rel="noopener" class="link-card" data-venture="os">
+    <span class="link-icon">📝</span>
+    <div class="link-text">
+      <div class="link-title">The Operator Briefing</div>
+      <div class="link-desc">Frameworks, systems, and lessons for solo operators building with AI.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://myeverydaydriver.com/guide" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">📖</span>
+    <div class="link-text">
+      <div class="link-title">The Driver's Survival Guide</div>
+      <div class="link-desc">14 chapters on repair decisions, maintenance, buying, and ownership. Coming soon.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- FREE TOOLS -->
+  <div class="section-label">Free Tools</div>
+
+  <a href="https://app.myeverydaydriver.com" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">🛠️</span>
+    <div class="link-text">
+      <div class="link-title">Repair vs. Replace Tool</div>
+      <div class="link-desc">Run your numbers. Get a clear answer. No account needed.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://myeverydaydriver.com/resources" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon">🔗</span>
+    <div class="link-text">
+      <div class="link-title">Driver Resource Hub</div>
+      <div class="link-desc">Every tool and reference mentioned in the book, organized and free.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- CONTACT -->
+  <div class="section-label">Contact</div>
+
+  <a href="mailto:hello@zbdos.com" class="link-card" data-venture="personal" id="contact-card">
+    <span class="link-icon">✉️</span>
+    <div class="link-text">
+      <div class="link-title">Email</div>
+      <div class="link-desc" id="contact-email-display">hello@zbdos.com — click to copy (or open in email app)</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- SOCIAL -->
+  <div class="section-label" style="text-align:center;">Connect</div>
+
+  <div class="social-row">
+    <a href="https://x.com/ChrisZimmerman" target="_blank" rel="noopener" class="social-link" title="Personal">X</a>
+    <a href="https://x.com/EverydayDriver_" target="_blank" rel="noopener" class="social-link" title="MED" style="color:var(--orange);">M·E·D</a>
+    <a href="https://x.com/ZBD_OS" target="_blank" rel="noopener" class="social-link" title="OS" style="color:var(--gold);">O·S</a>
+    <a href="https://www.linkedin.com/in/chris-zimmerman-8981b710/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">in</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="/chris-zimmerman-signature.png" alt="Chris Zimmerman signature" style="display: block; height: 48px; width: auto; margin: 0 auto 8px; filter: invert(0.85);">
+    <p>Wake County, NC · Building in public</p>
+    <p style="margin-top:6px; color:var(--rule);">© 2026 Chris Zimmerman</p>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    var card = document.getElementById('contact-card');
+    if (!card) return;
+    card.addEventListener('click', function (e) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        e.preventDefault();
+        navigator.clipboard.writeText('hello@zbdos.com').then(function () {
+          var display = document.getElementById('contact-email-display');
+          if (!display) return;
+          var original = display.textContent;
+          display.textContent = '✓ hello@zbdos.com copied — paste into your email';
+          setTimeout(function () { display.textContent = original; }, 2800);
+        }).catch(function () {
+          // Clipboard failed — allow default mailto to fire
+          window.location.href = card.href;
+        });
+      }
+      // else: no clipboard API — let default mailto behavior fire
+    });
+  })();
+</script>
+
+</body>
+</html>

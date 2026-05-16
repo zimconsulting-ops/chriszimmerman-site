@@ -1,0 +1,24 @@
+# Netlify CLI state (local-only — never commit; contains siteId)
+.netlify/
+
+# Vault content drafts and reference artifacts that live alongside source
+*__COPY__*.md
+*__DRAFT__*.md
+*__REF__*.md
+*__BRIEF__*.md
+*__PLAN__*.md
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# Local-only files
+*.local
+node_modules/
+.env
+.env.local

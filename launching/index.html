@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What I'm Building Right Now — Chris Zimmerman</title>
+<meta name="description" content="A running view of what Chris Zimmerman is building — My Everyday Driver, Operator Stack, and what's next. Updated as ventures ship.">
+<link rel="canonical" href="https://chriszimmerman.org/launching">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:title" content="What I'm Building Right Now — Chris Zimmerman">
+<meta property="og:description" content="A running view of what Chris is building — ventures, milestones, what's next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/launching">
+<meta property="og:image" content="https://chriszimmerman.org/headshot.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What I'm Building Right Now">
+<meta name="twitter:description" content="Ventures, milestones, what's next.">
+<meta name="twitter:image" content="https://chriszimmerman.org/headshot.jpg">
+
+<!-- Plausible (tagged events) -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --bg3: #1a2030;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --orange: #E8651A;
+  --green: #4caf7a;
+  --white: #ffffff;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 48px 20px 60px;
+}
+
+.container { width: 100%; max-width: 720px; margin: 0 auto; }
+
+/* TOP BAR */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 720px; margin: 0 auto 40px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: 0.06em; color: var(--txt3);
+}
+.topbar a { color: var(--txt2); text-decoration: none; }
+.topbar a:hover { color: var(--gold); }
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 44px;
+}
+.avatar {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--bg2); border: 2px solid var(--rule);
+  margin: 0 auto 18px; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(32px, 5.5vw, 48px); line-height: 1.1;
+  color: var(--white); margin-bottom: 14px; letter-spacing: -0.01em;
+}
+h1 em { color: var(--gold); font-style: italic; }
+.bio {
+  color: var(--txt2); font-size: 15px; max-width: 520px;
+  margin: 0 auto 16px; line-height: 1.65;
+}
+.meta {
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: 0.1em; color: var(--txt3);
+}
+
+/* SECTION LABELS */
+.section-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; width: 20px; height: 1px; background: var(--gold);
+  display: block; flex-shrink: 0;
+}
+
+.section { margin-bottom: 52px; }
+
+/* VENTURE CARDS */
+.venture-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 28px 30px;
+  margin-bottom: 18px; transition: border-color 0.2s;
+  text-decoration: none; display: block; color: inherit;
+}
+.venture-card:hover { border-color: var(--gold); }
+.venture-card[data-venture="med"] { border-left: 3px solid var(--orange); }
+.venture-card[data-venture="os"] { border-left: 3px solid var(--gold); }
+.venture-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 16px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.venture-title {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: 24px; color: var(--white); letter-spacing: -0.01em;
+}
+.venture-status {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 2px;
+  background: rgba(76, 175, 122, 0.15); color: var(--green);
+  flex-shrink: 0;
+}
+.venture-tagline {
+  color: var(--txt2); font-size: 14.5px; margin-bottom: 16px;
+  line-height: 1.65;
+}
+.venture-milestones {
+  list-style: none; margin-bottom: 18px;
+}
+.venture-milestones li {
+  color: var(--txt2); font-size: 13.5px;
+  padding: 3px 0; display: flex; align-items: flex-start; gap: 10px;
+}
+.venture-milestones li::before {
+  content: '✓'; color: var(--green); font-weight: 700; font-size: 11px;
+  margin-top: 3px; flex-shrink: 0;
+}
+.venture-links {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.venture-links a {
+  color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid transparent; padding-bottom: 2px;
+  transition: border-color 0.15s;
+}
+.venture-links a:hover { border-bottom-color: var(--gold); }
+
+/* SOON GRID */
+.soon-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px; margin-top: 6px;
+}
+.soon-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-left: 3px solid var(--txt3); border-radius: 2px;
+  padding: 16px 18px;
+}
+.soon-name {
+  font-family: 'Syne', 'Instrument Serif', serif;
+  font-size: 15px; color: var(--txt1); font-weight: 500;
+  margin-bottom: 4px;
+}
+.soon-desc {
+  font-size: 12.5px; color: var(--txt3); line-height: 1.55;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.01em;
+}
+
+/* FOLLOW / HELP */
+.pair-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+}
+@media (max-width: 640px) { .pair-grid { grid-template-columns: 1fr; } }
+.pair-card {
+  background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 4px; padding: 24px 26px;
+}
+.pair-card h3 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: 20px; color: var(--white); margin-bottom: 12px;
+}
+.pair-card p { font-size: 14px; color: var(--txt2); margin-bottom: 10px; line-height: 1.65; }
+.pair-card ul { list-style: none; }
+.pair-card li { font-size: 13.5px; color: var(--txt2); padding: 4px 0; display: flex; align-items: flex-start; gap: 10px; }
+.pair-card li::before {
+  content: '→'; color: var(--gold); font-weight: 500; margin-top: 1px; flex-shrink: 0;
+}
+.pair-card a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; }
+.pair-card a:hover { border-bottom-color: var(--gold); }
+
+/* SHARE */
+.share-section {
+  text-align: center; padding: 44px 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+.share-section p {
+  color: var(--txt2); font-size: 14px; max-width: 440px;
+  margin: 0 auto 20px;
+}
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--white);
+  font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 12px 22px; border-radius: 2px; text-decoration: none;
+  transition: background 0.15s; border: none; cursor: pointer;
+}
+.btn-gold:hover { background: var(--gold-light); color: var(--bg); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 1px solid var(--gold); color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 11px 21px; border-radius: 2px; text-decoration: none;
+  transition: all 0.15s; cursor: pointer;
+}
+.btn-outline:hover { background: var(--gold); color: var(--white); }
+.share-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.share-feedback {
+  margin-top: 16px; font-size: 12px; color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
+  opacity: 0; transition: opacity 0.3s;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center; color: var(--txt3); font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.05em;
+  padding-top: 28px;
+}
+.footer .signature {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 22px; color: var(--gold);
+  margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.footer a { color: var(--txt2); text-decoration: none; }
+.footer a:hover { color: var(--gold); }
+.footer .row { margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="https://chriszimmerman.org">← chriszimmerman.org</a>
+  <span>Updated: April 2026</span>
+</div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="avatar"><img src="/headshot.jpg" alt="Chris Zimmerman" width="84" height="84"></div>
+    <div class="eyebrow">A running view</div>
+    <h1>What I'm building <em>right now.</em></h1>
+    <p class="bio">Army vet. 20 years in automotive. Now a solo operator shipping AI-powered ventures from Wake County, NC. This page stays current as things launch.</p>
+    <p class="meta">Wake County, NC · Building in public</p>
+  </div>
+
+  <!-- HERO SCENE IMAGE -->
+  <div style="margin: -20px 0 44px; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: var(--bg2);">
+    <img src="./hero-scene.png" alt="A warm wood desk with an open notebook full of circuit diagrams, an OBD scanner cable, coffee, and a laptop — the operating space where these ventures get built." style="display: block; width: 100%; height: auto; max-height: 380px; object-fit: cover; object-position: center 40%;">
+  </div>
+
+  <!-- ACTIVE -->
+  <div class="section">
+    <div class="section-label">Active Ventures</div>
+
+    <a href="https://myeverydaydriver.com/launch" target="_blank" rel="noopener" class="venture-card plausible-event-name=hub-venture-click-med" data-venture="med">
+      <div class="venture-head">
+        <div class="venture-title">My Everyday Driver</div>
+        <div class="venture-status">Live</div>
+      </div>
+      <p class="venture-tagline">The trusted second opinion for everyday drivers. Free tools, honest guidance, advisory services, and a mechanic-authored Model Context Protocol server — built for the 90% of drivers who aren't mechanics.</p>
+      <ul class="venture-milestones">
+        <li>Newsletter live · 26 issues written</li>
+        <li>Repair Decision App live at app.myeverydaydriver.com</li>
+        <li>Paid advisory live (three tiers from $49)</li>
+        <li>MED Vehicle Intelligence MCP shipped on Smithery — built solo by a 20-year mechanic, not by an AI</li>
+        <li>Fleet Program waitlist open for founding members</li>
+      </ul>
+      <div class="venture-links">
+        <span>See the full announcement →</span>
+      </div>
+    </a>
+
+    <a href="https://zbdos.com/launch" target="_blank" rel="noopener" class="venture-card plausible-event-name=hub-venture-click-os" data-venture="os">
+      <div class="venture-head">
+        <div class="venture-title">Operator Stack</div>
+        <div class="venture-status">Live</div>
+      </div>
+      <p class="venture-tagline">A venture operating system for serious solo operators. One structured vault, 17 skills, 10 SOPs, and a Claude-native workflow that gets smarter every session. Built from a production environment running five ventures.</p>
+      <ul class="venture-milestones">
+        <li>Product live at zbdos.com — two tiers, Stripe wired</li>
+        <li>17 skills + 10 SOPs shipped</li>
+        <li>Agent Behavior Doctrine (anti-sycophancy) built in</li>
+        <li>Three free lead magnets + AI Proficiency Assessment</li>
+        <li>Biweekly release schedule through v1.8</li>
+      </ul>
+      <div class="venture-links">
+        <span>See the full announcement →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section">
+    <div class="section-label">Work With Me</div>
+    <a href="/scan" rel="noopener" class="venture-card plausible-event-name=hub-scan-click" data-venture="personal" style="border-left: 3px solid var(--gold);">
+      <div class="venture-head">
+        <div class="venture-title">Business Intelligence Scan</div>
+        <div class="venture-status" style="background: rgba(201, 146, 42, 0.15); color: var(--gold);">$500 · 72hr</div>
+      </div>
+      <p class="venture-tagline">One sourced research brief on a specific strategic question you're stuck on. Perplexity-powered research + operator-level synthesis. 5-8 page PDF, cited sources, decision framework included.</p>
+      <ul class="venture-milestones">
+        <li>For: solo operators, fractional execs, founders about to sign a $10K+ decision</li>
+        <li>Delivery: 72 hours from question to PDF in your inbox</li>
+        <li>Entry $500 · Custom scope $1,000-$1,500</li>
+      </ul>
+      <div class="venture-links">
+        <span>Start your scan →</span>
+      </div>
+    </a>
+    <a href="https://myeverydaydriver.com/advisory" target="_blank" rel="noopener" class="venture-card plausible-event-name=hub-advisory-click" data-venture="med">
+      <div class="venture-head">
+        <div class="venture-title">MED Advisory</div>
+        <div class="venture-status" style="background: rgba(232, 101, 26, 0.15); color: var(--orange);">$49 · Quick</div>
+      </div>
+      <p class="venture-tagline">Repair decisions, estimate reviews, purchase planning, and major decision research for everyday drivers. Three tiers. Flat-fee. No commissions on shop work.</p>
+      <ul class="venture-milestones">
+        <li>Quick Guidance — $49 · Strategy Session — $149 · Deep Research — $349</li>
+        <li>Live booking via Calendly</li>
+      </ul>
+      <div class="venture-links">
+        <span>See advisory tiers →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- COMING SOON -->
+  <div class="section">
+    <div class="section-label">In Progress</div>
+    <div class="soon-grid">
+      <div class="soon-card">
+        <div class="soon-name">Media Intel Daily</div>
+        <div class="soon-desc">Cross-spectrum news aggregator. Phase 1 shipped. Beehiiv publication queued.</div>
+      </div>
+      <div class="soon-card">
+        <div class="soon-name">MED Regulars</div>
+        <div class="soon-desc">Driver-side community. Founding 50 cohort in build. Recognition-first, not transactional.</div>
+      </div>
+      <div class="soon-card">
+        <div class="soon-name">Operator Program</div>
+        <div class="soon-desc">Shop-side execution arm of MED. Free installs for Wake County shops. Pilot launching.</div>
+      </div>
+      <div class="soon-card">
+        <div class="soon-name">The Driver's Survival Guide</div>
+        <div class="soon-desc">Book in development. Waitlist open at myeverydaydriver.com/guide for founding-price first edition.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOLLOW / HELP -->
+  <div class="section">
+    <div class="pair-grid">
+      <div class="pair-card">
+        <h3>How to follow along</h3>
+        <ul>
+          <li><a href="https://x.com/ChrisZimmerman" target="_blank" rel="noopener" class="plausible-event-name=hub-venture-click-personal">@ChrisZimmerman on X</a> — personal, daily</li>
+          <li><a href="https://x.com/EverydayDriver_" target="_blank" rel="noopener" class="plausible-event-name=hub-venture-click-med">@EverydayDriver_</a> — MED brand</li>
+          <li><a href="https://x.com/ZBD_OS" target="_blank" rel="noopener" class="plausible-event-name=hub-venture-click-os">@ZBD_OS</a> — Operator Stack brand</li>
+          <li><a href="https://www.linkedin.com/in/chris-zimmerman-8981b710/" target="_blank" rel="noopener">LinkedIn</a> — long-form and ops notes</li>
+          <li><a href="https://myeverydaydriver.com" target="_blank" rel="noopener" class="plausible-event-name=hub-venture-click-med">MED newsletter</a> — weekly, automotive</li>
+        </ul>
+      </div>
+      <div class="pair-card">
+        <h3>How you can help</h3>
+        <ul>
+          <li>Forward a venture page to one relevant person</li>
+          <li>Subscribe to whichever newsletter fits you</li>
+          <li>Intro me to operators, founders, or car-owning friends</li>
+          <li>Try a free tool and tell me what's broken</li>
+          <li>Share what resonates — early signal compounds</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-section">
+    <div class="section-label" style="justify-content: center;">One More Ask</div>
+    <p>If any of this is worth sharing with someone you know, do it now — takes 15 seconds, means everything in the early days.</p>
+    <div class="share-row">
+      <button id="share-btn" class="btn-gold plausible-event-name=hub-share-click">Share this page →</button>
+      <button id="copy-btn" class="btn-outline plausible-event-name=hub-share-click">Copy link</button>
+    </div>
+    <p id="copy-feedback" class="share-feedback">Link copied.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="./chris-zimmerman-signature.png" alt="Chris Zimmerman signature" style="display: block; height: 48px; width: auto; margin: 0 auto 8px; filter: invert(0.85);">
+    <div>Wake County, NC · Building in public</div>
+    <div class="row">© 2026 · <a href="https://chriszimmerman.org">chriszimmerman.org</a></div>
+  </div>
+
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    if (window.plausible) window.plausible('hub-view');
+  });
+
+  (function () {
+    var shareBtn = document.getElementById('share-btn');
+    var copyBtn = document.getElementById('copy-btn');
+    var feedback = document.getElementById('copy-feedback');
+    var shareUrl = 'https://chriszimmerman.org/launching';
+    var shareText = "What Chris Zimmerman is building — ventures, milestones, what's next.";
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function () {
+        if (navigator.share) {
+          navigator.share({ title: 'What I\'m building', text: shareText, url: shareUrl }).catch(function () {});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(shareUrl).then(function () {
+            if (feedback) { feedback.style.opacity = '1'; setTimeout(function () { feedback.style.opacity = '0'; }, 2400); }
+          });
+        }
+      });
+    }
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function () {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(shareUrl).then(function () {
+            if (feedback) { feedback.style.opacity = '1'; setTimeout(function () { feedback.style.opacity = '0'; }, 2400); }
+          });
+        }
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
