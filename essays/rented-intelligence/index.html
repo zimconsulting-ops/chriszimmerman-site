@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rented Intelligence — Christian Zimmerman</title>
+<meta name="description" content="The U.S. government switched off the most capable AI model on earth. Here is what it taught me about building a business on rented tools.">
+<link rel="canonical" href="https://chriszimmerman.org/essays/rented-intelligence/">
+<meta property="og:title" content="Rented Intelligence">
+<meta property="og:description" content="The U.S. government switched off the most capable AI model on earth. Here is what it taught me about building a business on rented tools.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chriszimmerman.org/essays/rented-intelligence/">
+<meta property="og:image" content="https://chriszimmerman.org/essays/rented-intelligence/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rented Intelligence">
+<meta name="twitter:description" content="The most capable AI model on earth, switched off by government order. What it taught me about building on rented tools.">
+<meta name="twitter:image" content="https://chriszimmerman.org/essays/rented-intelligence/banner.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg:#0D1117; --bg2:#161B22; --rule:#21262D;
+  --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#6B7280;
+  --gold:#C9922A; --gold-light:#E8B84B; --orange:#E8651A; --white:#fff;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg); color:var(--txt1);
+  font-family:'IBM Plex Sans',sans-serif; font-weight:300;
+  font-size:18px; line-height:1.7; padding:34px 20px 80px;
+}
+.wrap{max-width:680px; margin:0 auto;}
+.back{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--txt3); text-decoration:none; display:inline-block; margin-bottom:34px;
+}
+.back:hover{color:var(--gold);}
+.kicker{
+  font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+}
+h1{
+  font-family:'Instrument Serif',serif; font-weight:400; color:var(--white);
+  font-size:2.9rem; line-height:1.08; letter-spacing:-0.01em; margin-bottom:16px;
+}
+.dek{ color:var(--txt2); font-size:1.18rem; line-height:1.5; margin-bottom:22px; }
+.byline{
+  font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.05em;
+  color:var(--txt3); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:12px 0; margin-bottom:36px;
+}
+.accent{ width:40px; height:3px; background:var(--gold); border-radius:2px; margin:0 0 36px; }
+article p{ margin:0 0 22px; }
+article h2{
+  font-family:'IBM Plex Sans',sans-serif; font-weight:600; color:var(--white);
+  font-size:1.35rem; line-height:1.25; margin:40px 0 14px; letter-spacing:-0.01em;
+}
+article strong{ color:var(--white); font-weight:600; }
+article ul{ margin:0 0 22px; padding-left:22px; }
+article li{ margin:0 0 9px; }
+figure{ margin:34px 0; }
+figure img{ width:100%; height:auto; border-radius:12px; border:1px solid var(--rule); display:block; }
+figcaption{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--txt3);
+  margin-top:10px; line-height:1.45; text-align:center;
+}
+.screenshot img{ max-width:340px; margin:0 auto; }
+.pull{
+  border-left:3px solid var(--gold); padding:4px 0 4px 20px; margin:30px 0;
+  font-family:'Instrument Serif',serif; font-style:italic; font-size:1.5rem; line-height:1.3; color:var(--txt1);
+}
+.cta{
+  margin-top:54px; background:var(--bg2); border:1px solid var(--rule); border-left:3px solid var(--gold);
+  border-radius:12px; padding:26px 26px 28px;
+}
+.cta .lbl{
+  font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px;
+}
+.cta h3{ font-family:'IBM Plex Sans',sans-serif; font-weight:600; color:var(--white); font-size:1.18rem; margin-bottom:10px; }
+.cta p{ color:var(--txt2); font-size:0.96rem; margin-bottom:18px; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:10px; }
+.btn{
+  display:inline-block; text-decoration:none; font-size:0.9rem; font-weight:500;
+  padding:11px 18px; border-radius:9px; transition:transform .15s, border-color .2s, background .2s;
+}
+.btn-gold{ background:var(--gold); color:#1a1205; }
+.btn-gold:hover{ background:var(--gold-light); transform:translateY(-1px); }
+.btn-ghost{ background:transparent; color:var(--txt1); border:1px solid var(--rule); }
+.btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+.foot{
+  margin-top:50px; padding-top:22px; border-top:1px solid var(--rule); text-align:center;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--txt3);
+}
+.foot a{ color:var(--txt3); text-decoration:none; }
+.foot a:hover{ color:var(--gold); }
+@media(max-width:560px){ h1{ font-size:2.2rem; } body{ font-size:17px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="/essays/" class="back">← Essays</a>
+
+  <div class="kicker">Essay · June 2026</div>
+  <h1>Rented Intelligence</h1>
+  <p class="dek">The U.S. government switched off the most capable AI model on earth. Here is what it taught me about building a business on rented tools.</p>
+  <div class="byline">Christian Zimmerman · June 14, 2026</div>
+  <div class="accent"></div>
+
+  <figure>
+    <img src="banner.jpg" alt="A dark data center with one server rack powered down and glowing red while the rows behind it run blue.">
+    <figcaption>When the most powerful model in your stack goes dark, the rest of the rack keeps running. · Illustration: ZBD (AI-generated)</figcaption>
+  </figure>
+
+  <article>
+    <p>On June 9, Anthropic released Claude Fable 5, which by most published benchmarks was the most capable AI model released to the public to date.</p>
+    <p>Three days later the U.S. government ordered it switched off, and as I write this on June 14 it is still dark with no date for its return.</p>
+    <p>Here is what makes it strange. The model wasn't hacked and it didn't break. The Commerce Department issued an export-control directive restricting access by foreign nationals, and since a model has no way to check your passport in real time, Anthropic chose to pull Fable 5 and its more powerful sibling Mythos 5 for everyone on the planet so it could stay compliant.</p>
+    <p>I build five small ventures from a home office on top of models like this one, so I watched the best tool in my stack quietly disappear over an afternoon. The longer I sat with it the more I realized the lesson wasn't really about Washington or even about Anthropic. It comes down to a word a lot of us use without thinking about it, which is access.</p>
+
+    <h2>What actually happened</h2>
+    <p>The order was a national-security export control, and because its scope reached foreign nationals both inside and outside the country, a narrow directive turned into a worldwide blackout. Every other Claude model kept running, including Haiku, Sonnet, and Opus, and I am actually writing this on Opus 4.8 while its smarter sibling sits offline.</p>
+
+    <figure class="screenshot">
+      <img src="proof.png" alt="Claude model selector showing Fable 5 marked Currently unavailable with Opus 4.8 selected.">
+      <figcaption>June 14, my model picker. Fable 5 reads "Currently unavailable." Opus 4.8 is carrying the work. · Screenshot: author</figcaption>
+    </figure>
+
+    <p>The reasoning behind it is still being argued over. Anthropic says the government offered only verbal evidence of a narrow jailbreak, and it pointed out that the same capability already lives in models you can use today, like OpenAI's GPT-5.5, which stayed online the entire time. Katie Moussouris, one of the more trusted names in security research, read the underlying paper and said plainly that it wasn't a jailbreak at all. Reporting from outlets including the Wall Street Journal and Reuters traced the government's concern back to a security flag raised by Amazon, which happens to be one of Anthropic's largest investors, though Anthropic hasn't confirmed any of that in its own account. Box CEO Aaron Levie called the whole thing a turning point for AI regulation, and I think he is right, just not for the reason most people are posting about.</p>
+
+    <figure>
+      <img src="timeline.jpg" alt="Timeline. June 9 Fable 5 ships, June 12 the government orders it off, June 14 still dark.">
+      <figcaption>Three days from launch to government shutdown, and still dark. · Graphic: ZBD · AI Think Tank. Sources: Anthropic, Reuters, CyberScoop.</figcaption>
+    </figure>
+
+    <h2>The part worth sitting with if you build things</h2>
+    <p>Set the politics aside and you are left with a fairly simple fact. The most powerful model in the world was there on a Tuesday and gone by Friday, by force, with no warning and no appeal.</p>
+    <p>What that tells me is that model access is rented infrastructure. It is tied to a jurisdiction, it can be taken back, and it has now clearly shown that it can be political. If your product is a thin layer wrapped around one model name, then you are running a business with a single point of failure that you do not own and cannot insure against. A lot of teams learned that the hard way this week, because the ones building on Fable through the API opened their apps to an error message instead of a product.</p>
+
+    <h2>What I did about it</h2>
+    <p>Honestly, not much, and that is the part I am proud of.</p>
+    <p>My setup doesn't tie itself to a single model name. It points at a capability and keeps a backup wired in underneath, so when Fable went dark the work simply shifted over to Opus and everything kept moving. There was no rebuild, no scramble, and nothing on my side that a customer would have noticed.</p>
+    <p>A few habits make that possible:</p>
+    <ul>
+      <li>I treat any one model as a swappable input instead of a foundation, and I keep a second option ready before I ever need it.</li>
+      <li>I put my real effort into the parts no provider can switch off, which are the data, the prompts, the workflows, the judgment, and the relationships, because those are the things that compound over time.</li>
+      <li>I build on the quiet assumption that any single model could vanish tomorrow, because this week one actually did.</li>
+    </ul>
+    <p>The proof is wonderfully boring. My ventures didn't stop, the model underneath them changed, and the system around it held steady.</p>
+
+    <h2>The line that matters</h2>
+    <p class="pull">The model is rented. The system you build around it is yours. Build accordingly.</p>
+    <p>The people who are going to struggle next are the ones who mistook a powerful tool for a durable business, and the ones who keep shipping are the ones who treated the smartest AI on earth as a single replaceable part inside a machine they actually own. That was easy to overlook on June 8, and it is a lot harder to overlook now.</p>
+    <p>If you are building on this stuff too, I would really like to hear how you are thinking about it. Reach out, ask a question, or tell me where you think I have it wrong.</p>
+  </article>
+
+  <div class="cta">
+    <div class="lbl">Build on systems you own</div>
+    <h3>I help solo operators build durable systems on AI.</h3>
+    <p>Operator Stack is the operating system I run my own ventures on — one vault, one rhythm, every session building on the last. If this essay landed, that is where the playbook lives.</p>
+    <div class="cta-row">
+      <a href="https://zbdos.com" target="_blank" rel="noopener" class="btn btn-gold plausible-event-name=czorg-essay-os-cta">See Operator Stack →</a>
+      <a href="/essays/" class="btn btn-ghost plausible-event-name=czorg-essay-more-cta">More essays</a>
+    </div>
+  </div>
+
+  <div class="foot">
+    <p><a href="/">chriszimmerman.org</a> · Operator. Advisor. Builder. · Wake County, NC</p>
+  </div>
+
+</div>
+</body>
+</html>
