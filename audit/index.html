@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operator Stack Audit — Christian Zimmerman</title>
+<meta name="description" content="A 1-page audit of your operator stack. Tools, automation, AI infrastructure. Delivered in 5 business days. $349. By an operator who lives in markdown.">
+<meta property="og:title" content="Operator Stack Audit — Christian Zimmerman">
+<meta property="og:description" content="A 1-page audit of your operator stack. $349. 5 business days. Async — no call required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/audit">
+<meta name="twitter:card" content="summary">
+
+<!-- Schema.org JSON-LD for AI-readable structure -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Operator Stack Audit",
+  "description": "Async 1-page audit of an operator's tooling, automation, and AI infrastructure stack. Delivered within 5 business days. Top 3-6 prioritized recommendations + risks + 30-day action plan.",
+  "provider": {
+    "@type": "Person",
+    "name": "Christian Zimmerman",
+    "url": "https://chriszimmerman.org",
+    "sameAs": ["https://chriszimmerman.org/launching"]
+  },
+  "areaServed": "Online",
+  "offers": {
+    "@type": "Offer",
+    "price": "349.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://chriszimmerman.org/audit"
+  },
+  "category": "Operator Infrastructure Audit"
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --bg3: #1C2128;
+  --rule: #21262D;
+  --rule2: #30363D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --orange: #E8651A;
+  --white: #ffffff;
+  --max: 720px;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* ===== HERO ===== */
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.6rem;
+  line-height: 1.15;
+  color: var(--white);
+  letter-spacing: -0.015em;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+.lede {
+  color: var(--txt2);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.18s;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--bg);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--txt1);
+  border-color: var(--rule2);
+}
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.price-line {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--txt3);
+  letter-spacing: 0.04em;
+}
+
+/* ===== RULES + SECTIONS ===== */
+.rule {
+  height: 1px;
+  background: var(--rule);
+  margin: 48px 0;
+  border: none;
+}
+section { margin-bottom: 8px; }
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--txt3);
+  margin-bottom: 14px;
+}
+h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.85rem;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+section p {
+  color: var(--txt2);
+  margin-bottom: 18px;
+}
+section p strong, section p b {
+  color: var(--txt1);
+  font-weight: 500;
+}
+
+/* ===== WHAT YOU GET (cards) ===== */
+.cards {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 22px 24px;
+}
+.card-title {
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-title-mark {
+  color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+}
+.card p {
+  color: var(--txt2);
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+/* ===== PROCESS (numbered list) ===== */
+.process {
+  list-style: none;
+  counter-reset: process;
+  padding: 0;
+}
+.process li {
+  counter-increment: process;
+  position: relative;
+  padding: 18px 0 18px 56px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--txt2);
+}
+.process li::before {
+  content: counter(process, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 18px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+.process strong {
+  color: var(--white);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+.process li:last-child { border-bottom: none; }
+
+/* ===== PRICING ===== */
+.pricing {
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  padding: 36px 32px;
+  text-align: center;
+}
+.pricing-tier {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.pricing-amount {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3.2rem;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.pricing-amount-suffix {
+  font-size: 1rem;
+  color: var(--txt2);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+}
+.pricing-sla {
+  color: var(--txt3);
+  font-size: 0.85rem;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.pricing-includes {
+  text-align: left;
+  max-width: 460px;
+  margin: 0 auto 28px;
+  list-style: none;
+}
+.pricing-includes li {
+  padding: 8px 0;
+  color: var(--txt2);
+  font-size: 0.97rem;
+  position: relative;
+  padding-left: 24px;
+}
+.pricing-includes li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ===== FAQ ===== */
+.faq {
+  border-top: 1px solid var(--rule);
+}
+.faq-item {
+  border-bottom: 1px solid var(--rule);
+  padding: 20px 0;
+}
+.faq-q {
+  color: var(--white);
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+.faq-a {
+  color: var(--txt2);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.about-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 2px solid var(--rule);
+  overflow: hidden;
+}
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.about-name {
+  color: var(--white);
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+.about-credentials {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--txt3);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  text-align: center;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 44px 32px;
+  margin-top: 8px;
+}
+.final-cta h2 { margin-bottom: 16px; }
+.final-cta p { margin-bottom: 28px; }
+
+/* ===== FOOTER ===== */
+footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  color: var(--txt3);
+  font-size: 0.82rem;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+}
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-row { margin-bottom: 8px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 540px) {
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.55rem; }
+  .pricing-amount { font-size: 2.6rem; }
+  .about { grid-template-columns: 80px 1fr; }
+  .about-photo { width: 80px; height: 80px; }
+  .wrap { padding: 40px 20px 64px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <div class="eyebrow">Productized · Async · 5 Business Days</div>
+  <h1>An audit of your operator stack. By someone who runs one.</h1>
+  <p class="lede">
+    You've got tools layered on tools. Some are working. Some are bleeding cost or time. A few are quietly broken. Send me what you're running, and you'll get back a single-page audit with the 3-6 highest-leverage moves to make in the next 30 days — prioritized, specific, no fluff.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#pay">Pay $349 · Start audit</a>
+    <a class="btn btn-secondary" href="#how">See how it works</a>
+  </div>
+  <div class="price-line">$349 flat · No call required · 5-business-day SLA</div>
+
+  <hr class="rule">
+
+  <!-- ===== WHAT IS THIS ===== -->
+  <section>
+    <div class="section-label">What this is</div>
+    <h2>One-page operator audit. Delivered like work, not a sales pitch.</h2>
+    <p>
+      You send me an intake form — your current stack, your biggest pain, what you're building. Five business days later, you get a PDF: stack inventory, top recommendations ranked by leverage, risks with mitigations, and a 30-day action plan. No call. No upsell theater. The audit is the product.
+    </p>
+    <p>
+      <strong>What this is NOT:</strong> a discovery call disguised as an audit. A generic "here's what 90% of operators should do" template. A pitch for a $5K retainer. The deliverable is finite, scoped, and yours.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== WHAT YOU GET ===== -->
+  <section>
+    <div class="section-label">What you get</div>
+    <h2>The deliverable.</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title"><span class="card-title-mark">01</span> Stack Inventory</div>
+        <p>Every tool, automation, AI service, and integration in your current setup — categorized so you can see the whole picture at once.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-mark">02</span> Top 3-6 Recommendations</div>
+        <p>Prioritized HIGH / MEDIUM / LOW with specific tools, specific actions, effort estimates, and dollar impact where I can calculate it.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-mark">03</span> Risks Identified</div>
+        <p>What in your stack is brittle, expensive, or quietly failing. Each risk paired with a concrete mitigation, not a "be aware" platitude.</p>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="card-title-mark">04</span> 30-Day Action Plan</div>
+        <p>Week-by-week, ordered by leverage. The first action is the one that matters most — not the easiest to start with.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== WHO IT'S FOR ===== -->
+  <section>
+    <div class="section-label">Who it's for</div>
+    <h2>The right buyer.</h2>
+    <p>
+      You're running real work through a stack you haven't audited in 6+ months. You've added tools as problems came up — Zapier for that, ChatGPT for this, Notion AI for the other thing — and now the stack runs you instead of the other way around. You don't have the time to do a clean self-audit. You want a second set of operator-grade eyes on it.
+    </p>
+    <p>
+      <strong>This is for you if:</strong> you're a solo operator, indie founder, agency owner, or content-driven business. You're paying $500-$5K/month in tooling. You'd happily spend $349 to figure out what's working, what to cut, and what to add next.
+    </p>
+    <p>
+      <strong>This is NOT for you if:</strong> you're pre-revenue and asking what tools to start with. You want a one-hour synchronous strategy call (that's <a href="https://calendly.com/zimconsulting/zbds-strategic-plan" style="color:var(--gold);">Strategic Plan — $229</a>). You want me to implement the changes for you (that's Custom Build — $549+).
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="how">
+    <div class="section-label">How it works</div>
+    <h2>Five steps. No call required.</h2>
+    <ol class="process">
+      <li>
+        <strong>Pay $349.</strong>
+        Stripe payment, single click. You get a receipt and a link to the intake form.
+      </li>
+      <li>
+        <strong>Submit the intake form.</strong>
+        12 questions, ~15 minutes to fill. Your current stack, biggest pain, what you're building, top 3 questions you want answered.
+      </li>
+      <li>
+        <strong>I audit your stack.</strong>
+        5 business days. I review what you sent, research where needed, and draft the audit.
+      </li>
+      <li>
+        <strong>You get the PDF.</strong>
+        Emailed direct. Single page, structured. Recommendations are specific — not "consider better automation," but "switch from Zapier to Make for the X workflow because Y."
+      </li>
+      <li>
+        <strong>One round of follow-up Q&amp;A.</strong>
+        14 days to email back questions about anything in the audit. I respond async. If you want a synchronous call, book a $89 Quick Answer.
+      </li>
+    </ol>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== PRICING ===== -->
+  <section id="pay">
+    <div class="section-label">Pricing</div>
+    <h2>One tier. One price.</h2>
+    <div class="pricing">
+      <div class="pricing-tier">Stack Audit</div>
+      <div class="pricing-amount">$349<span class="pricing-amount-suffix">flat</span></div>
+      <div class="pricing-sla">5 business days · Async · No call required</div>
+      <ul class="pricing-includes">
+        <li>1-page PDF audit emailed direct</li>
+        <li>Stack inventory across 8 categories</li>
+        <li>Top 3-6 prioritized recommendations</li>
+        <li>Risks + concrete mitigations</li>
+        <li>30-day week-by-week action plan</li>
+        <li>14 days of async follow-up Q&amp;A</li>
+      </ul>
+      <!-- TODO: Replace with live Stripe Payment Link -->
+      <a class="btn btn-primary" href="STRIPE_PAYMENT_LINK_PENDING" style="font-size:1rem;padding:16px 32px;">Pay $349 · Get the form</a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== ABOUT ===== -->
+  <section>
+    <div class="section-label">Who's auditing</div>
+    <h2>Built by an operator, for operators.</h2>
+    <div class="about">
+      <div class="about-photo">
+        <img src="../headshot.jpg" alt="Christian Zimmerman">
+      </div>
+      <div>
+        <div class="about-name">Christian Zimmerman</div>
+        <div class="about-credentials">Multi-Venture Operator · ZBD Solutions · Wake County, NC</div>
+        <p>
+          I run a 5-venture business through 327 markdown files, AI tooling, and a vault-driven operating system. ZBD Solutions, My Everyday Driver, Operator Stack, ZBD Media — concrete proof of multi-venture ops. I'm not a consultant who decided to audit stacks. I'm an operator who's done the work and seen which patterns hold up under real volume.
+        </p>
+        <p style="margin-top:14px;">
+          When I audit your stack, you get the same thinking I apply to my own — not a template, not a generic checklist. Operator-grade judgment, scoped to your situation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== FAQ ===== -->
+  <section>
+    <div class="section-label">Common questions</div>
+    <h2>FAQ.</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">Can't I just ask ChatGPT to audit my stack?</div>
+        <div class="faq-a">You can. It'll generate plausible-sounding recommendations based on patterns in its training data. Those recommendations won't account for your specific context, won't prioritize by leverage, and won't catch the things that aren't on the public web. The judgment is the product.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why no call?</div>
+        <div class="faq-a">Calls are expensive (your time, my time, scheduling friction) and async work usually produces better recommendations. You have time to think about your intake answers. I have time to research properly. If you want a synchronous conversation, book a $89 Quick Answer instead — different product, different format.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I want you to implement the recommendations?</div>
+        <div class="faq-a">That's Custom Build ($549+) or Lane 1 Custom Tools ($1,950+). The audit is intentionally diagnostic, not implementation. Many clients audit first, then book implementation work for whichever 1-2 recommendations matter most.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will my audit be shared publicly?</div>
+        <div class="faq-a">No. Audits are confidential by default. If you'd like to be a case study (with anonymization), that's opt-in and you get a discount on a follow-up engagement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if my stack is really simple?</div>
+        <div class="faq-a">Then the audit will be shorter — maybe 3 recommendations instead of 6 — and the focus will be on what to add or strengthen, not what to cut. The price doesn't change because the thinking work is the cost, not the page count.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if my stack is really complex (15+ tools, multiple agents)?</div>
+        <div class="faq-a">Then the audit might prioritize 3 things to focus on rather than try to cover everything. If your situation is genuinely too broad for a 1-page audit, I'll tell you upfront and refund the $349. Better to set scope right than overpromise.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Refund policy?</div>
+        <div class="faq-a">Full refund if I haven't started work yet (within 24 hours of intake submission). Once I start research, no refund — but if you're unhappy with the deliverable, I'll do one round of revisions at no charge.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ===== FINAL CTA ===== -->
+  <section>
+    <div class="final-cta">
+      <h2>Ready for operator-grade eyes on your stack?</h2>
+      <p>$349, async, 5 business days. Pay, send the intake, get the audit. No sales call, no upsell theater.</p>
+      <a class="btn btn-primary" href="#pay" style="font-size:1rem;padding:16px 32px;">Pay $349 · Start your audit</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-row">Operated by <a href="https://zbdconsulting.com">ZBD Solutions</a> · <a href="https://chriszimmerman.org">chriszimmerman.org</a></div>
+    <div class="footer-row">Wake County, NC · chris@zbdconsulting.com</div>
+  </footer>
+
+</div>
+
+<!-- Hidden form for Netlify Forms detection (the real form lives on /audit/intake.html) -->
+<form name="stack-audit-intake" netlify hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="role" />
+  <input type="hidden" name="form-name" value="stack-audit-intake" />
+</form>
+
+</body>
+</html>

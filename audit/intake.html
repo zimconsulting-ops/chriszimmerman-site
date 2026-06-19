@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stack Audit — Intake Form — Christian Zimmerman</title>
+<meta name="description" content="Stack Audit intake form. 12 questions, ~15 minutes. Submit to start your 5-business-day audit.">
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --rule: #21262D;
+  --rule2: #30363D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #6B7280;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --error: #E8651A;
+}
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.2rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.lede {
+  color: var(--txt2);
+  margin-bottom: 32px;
+}
+.confirm-banner {
+  background: var(--bg2);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 36px;
+  font-size: 0.92rem;
+  color: var(--txt1);
+}
+.confirm-banner strong { color: var(--gold); }
+
+form { display: block; }
+.field {
+  margin-bottom: 28px;
+}
+label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--txt3);
+  margin-bottom: 8px;
+}
+label .required { color: var(--gold); }
+.help {
+  display: block;
+  color: var(--txt3);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-style: italic;
+}
+input[type=text], input[type=email], input[type=url], textarea, select {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 300;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1.5;
+}
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+                    linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-position: calc(100% - 18px) calc(50% + 2px),
+                       calc(100% - 13px) calc(50% + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 36px;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  color: var(--txt3);
+  font-size: 0.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.04em;
+}
+footer a { color: var(--gold); text-decoration: none; }
+@media (max-width: 540px) {
+  h1 { font-size: 1.75rem; }
+  .wrap { padding: 40px 20px 64px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="eyebrow">Stack Audit · Intake Form</div>
+  <h1>Tell me what you're running.</h1>
+  <p class="lede">12 questions, ~15 minutes. Be specific — the audit quality scales with how much real detail you give me.</p>
+
+  <div class="confirm-banner">
+    <strong>Payment confirmed.</strong> Submit this form to start your audit. You'll receive a confirmation email within 1 hour, and the PDF audit will arrive within 5 business days.
+  </div>
+
+  <form name="stack-audit-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/audit/thanks.html">
+    <input type="hidden" name="form-name" value="stack-audit-intake" />
+    <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+    <div class="field">
+      <label for="name">Name <span class="required">*</span></label>
+      <input id="name" type="text" name="name" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email <span class="required">*</span></label>
+      <input id="email" type="email" name="email" required>
+      <span class="help">Where I'll send your audit PDF.</span>
+    </div>
+
+    <div class="field">
+      <label for="payment-ref">Stripe receipt / payment ref <span class="required">*</span></label>
+      <input id="payment-ref" type="text" name="payment-ref" required placeholder="ch_... or last 4 of receipt #">
+      <span class="help">From your $349 receipt. Helps me match the audit to your payment.</span>
+    </div>
+
+    <div class="field">
+      <label for="role">What you do (1-line) <span class="required">*</span></label>
+      <input id="role" type="text" name="role" required placeholder="e.g., AI agency founder · indie SaaS · creator + course operator">
+    </div>
+
+    <div class="field">
+      <label for="site">Current site or LinkedIn URL</label>
+      <input id="site" type="url" name="site" placeholder="https://...">
+      <span class="help">So I can see how you present today.</span>
+    </div>
+
+    <div class="field">
+      <label for="revenue">Monthly revenue range (rough)</label>
+      <select id="revenue" name="revenue">
+        <option value="">— select —</option>
+        <option value="pre-revenue">Pre-revenue</option>
+        <option value="under-5k">Under $5K/mo</option>
+        <option value="5k-15k">$5K-$15K/mo</option>
+        <option value="15k-50k">$15K-$50K/mo</option>
+        <option value="50k-plus">$50K+/mo</option>
+        <option value="prefer-not-to-say">Prefer not to say</option>
+      </select>
+      <span class="help">Helps calibrate which recommendations are worth the effort vs. premature.</span>
+    </div>
+
+    <div class="field">
+      <label for="stack">Current stack — list everything you actively use <span class="required">*</span></label>
+      <textarea id="stack" name="stack" required placeholder="Vault / context: ...
+AI tooling: ...
+Automation: ...
+CRM / customer ops: ...
+Content infra: ...
+Comms / community: ...
+Payment / commerce: ...
+Site / hosting: ..."></textarea>
+      <span class="help">Free-form. Categories are optional but help me. List tools you pay for AND tools you use daily even if free.</span>
+    </div>
+
+    <div class="field">
+      <label for="pain">Biggest pain right now <span class="required">*</span></label>
+      <textarea id="pain" name="pain" required placeholder="What's actually hurting? The thing that wakes you up at 2am or eats hours per week."></textarea>
+      <span class="help">Be specific. "Things feel chaotic" is too vague to act on; "I lose 6 hours/week to manual lead handoffs" is actionable.</span>
+    </div>
+
+    <div class="field">
+      <label for="building">What you're building right now <span class="required">*</span></label>
+      <textarea id="building" name="building" required placeholder="Active projects, product launches, growth pushes — the work-in-flight that the stack needs to support."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="questions">Top 3 questions you want this audit to answer <span class="required">*</span></label>
+      <textarea id="questions" name="questions" required placeholder="1. ...
+2. ...
+3. ..."></textarea>
+      <span class="help">If you can name the specific decisions you're stuck on, the audit becomes 10x more useful. Ask hard questions.</span>
+    </div>
+
+    <div class="field">
+      <label for="budget">Monthly tooling spend (rough)</label>
+      <select id="budget" name="budget">
+        <option value="">— select —</option>
+        <option value="under-200">Under $200/mo</option>
+        <option value="200-500">$200-$500/mo</option>
+        <option value="500-1500">$500-$1,500/mo</option>
+        <option value="1500-5000">$1,500-$5,000/mo</option>
+        <option value="5000-plus">$5,000+/mo</option>
+        <option value="prefer-not-to-say">Prefer not to say</option>
+      </select>
+      <span class="help">Lets me calibrate which optimizations have meaningful dollar impact.</span>
+    </div>
+
+    <div class="field">
+      <label for="other">Anything else I should know?</label>
+      <textarea id="other" name="other" placeholder="Constraints, preferences, what's off-limits, prior bad experiences with similar audits, etc."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="case-study">Open to being a case study?</label>
+      <select id="case-study" name="case-study">
+        <option value="no">No — confidential</option>
+        <option value="anonymized">Yes if anonymized</option>
+        <option value="named">Yes, named</option>
+      </select>
+      <span class="help">Named case studies get $50 off the next engagement.</span>
+    </div>
+
+    <button class="btn" type="submit">Submit · Start my audit</button>
+
+  </form>
+
+  <footer>
+    <div>Operated by <a href="https://zbdconsulting.com">ZBD Solutions</a> · chris@zbdconsulting.com</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
