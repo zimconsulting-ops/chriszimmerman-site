@@ -4,4 +4,6 @@
   <url><loc>https://chriszimmerman.org/essays/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://chriszimmerman.org/essays/rented-intelligence/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://chriszimmerman.org/essays/model-proof/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://chriszimmerman.org/launching/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://chriszimmerman.org/scan/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
