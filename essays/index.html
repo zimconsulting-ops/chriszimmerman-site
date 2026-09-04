@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-:root{ --bg:#0D1117; --bg2:#161B22; --rule:#21262D; --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#6B7280; --gold:#C9922A; --white:#fff; }
+:root{ --bg:#0D1117; --bg2:#161B22; --rule:#21262D; --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#8A919D; /* was #6B7280 = 3.58:1 on --bg2, FAILED AA body. It carried .link-desc on every link row, plus .section-label, .location and .footer -- all under 13px, so the 3:1 large-text exemption never applied. Measured + corrected 2026-09-03. */ --gold:#C9922A; --white:#fff; }
 body{ background:var(--bg); color:var(--txt1); font-family:'IBM Plex Sans',sans-serif; font-weight:300; font-size:16px; line-height:1.6; padding:40px 20px 70px; }
 .wrap{ max-width:640px; margin:0 auto; }
 .back{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--txt3); text-decoration:none; display:inline-block; margin-bottom:30px; }

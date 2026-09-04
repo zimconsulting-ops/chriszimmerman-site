@@ -24,7 +24,7 @@
   --rule: #21262D;
   --txt1: #E8E4DC;
   --txt2: #9CA3AF;
-  --txt3: #6B7280;
+  --txt3: #8A919D; /* was #6B7280 = 3.58:1 on --bg2, FAILED AA body. It carried .link-desc on every link row, plus .section-label, .location and .footer -- all under 13px, so the 3:1 large-text exemption never applied. Measured + corrected 2026-09-03. */
   --gold: #C9922A;
   --gold-light: #E8B84B;
   --orange: #E8651A;
@@ -204,6 +204,16 @@ body {
 
 /* SPACER */
 .spacer { height: 28px; }
+
+/* CZ icon set — wired 2026-09-03, replacing 17 placeholder emoji.
+   Square caps + miter joins: the construction difference from the MED
+   set, and the reason the two are legible apart at 16px. */
+.cz-icon {
+  width: 20px; height: 20px;
+  fill: none; stroke: currentColor;
+  stroke-width: 1.5; stroke-linecap: butt; stroke-linejoin: miter;
+  flex: none;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -267,16 +277,16 @@ body {
   <div class="section-label">Right Now</div>
 
   <a href="https://myeverydaydriver.com/advisory" target="_blank" rel="noopener" class="link-card plausible-event-name=czorg-home-advisory-cta" data-venture="med">
-    <span class="link-icon">🔧</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Holding a repair quote? Get a $49 second opinion"><use href="assets/cz-icons.svg#cz-advisory"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Holding a repair quote? Get a $49 second opinion</div>
-      <div class="link-desc">A written keep / question / skip verdict from a 25-year mechanic in 24 hours. If the quote's fair, I'll tell you — same price.</div>
+      <div class="link-desc">A written keep / question / skip verdict from a 25-year mechanic within 48 hours. If the quote's fair, I'll tell you — same price.</div>
     </div>
     <span class="link-arrow">→</span>
   </a>
 
   <a href="/launching" rel="noopener" class="link-card" data-venture="personal">
-    <span class="link-icon">🛠️</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="What I&#x27;m Building Right Now"><use href="assets/cz-icons.svg#cz-building"></use></svg></span>
     <div class="link-text">
       <div class="link-title">What I'm Building Right Now</div>
       <div class="link-desc">A running view of active ventures, in-progress projects, and what ships next. Updated as I go.</div>
@@ -290,7 +300,7 @@ body {
   <div class="section-label">Ventures</div>
 
   <a href="https://myeverydaydriver.com" target="_blank" rel="noopener" class="link-card" data-venture="med">
-    <span class="link-icon">🔧</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="My Everyday Driver"><use href="assets/cz-icons.svg#cz-venture-med"></use></svg></span>
     <div class="link-text">
       <div class="link-title">My Everyday Driver</div>
       <div class="link-desc">The trusted second opinion for everyday drivers. Free tools, advisory, honest guidance.</div>
@@ -299,7 +309,7 @@ body {
   </a>
 
   <a href="https://zbdos.com" target="_blank" rel="noopener" class="link-card" data-venture="os">
-    <span class="link-icon">⚙️</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Operator Stack"><use href="assets/cz-icons.svg#cz-venture-os"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Operator Stack</div>
       <div class="link-desc">AI operating system for serious solo operators. One vault, one system, every session builds on the last.</div>
@@ -308,10 +318,59 @@ body {
   </a>
 
   <a href="/scan" rel="noopener" class="link-card plausible-event-name=czorg-home-scan-cta" data-venture="personal">
-    <span class="link-icon">🔍</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Business Intelligence Scan"><use href="assets/cz-icons.svg#cz-scan"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Business Intelligence Scan</div>
       <div class="link-desc">Sourced research on one strategic question. 72-hour delivery. $500 entry, +$250 rush.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="spacer"></div>
+
+  <!-- BUILT & SHIPPED — proof strip, added 2026-08-23. What was built, for whom, what it produced. -->
+  <div class="section-label">Built &amp; Shipped</div>
+
+  <a href="https://myeverydaydriver.com" target="_blank" rel="noopener" class="link-card" data-venture="med">
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="My Everyday Driver — built and operated end to end"><use href="assets/cz-icons.svg#cz-portfolio"></use></svg></span>
+    <div class="link-text">
+      <div class="link-title">My Everyday Driver — built and operated end to end</div>
+      <div class="link-desc">A 30-page consumer auto-advisory platform: site, blog, cost guides, a fix-or-replace calculator app, and a paid second-opinion service. Designed, written, coded, and shipped solo.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://trophypartner-pilot.netlify.app" target="_blank" rel="noopener" class="link-card" data-venture="personal">
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="TrophyPartner — 30-page storefront pilot"><use href="assets/cz-icons.svg#cz-storefront"></use></svg></span>
+    <div class="link-text">
+      <div class="link-title">TrophyPartner — 30-page storefront pilot</div>
+      <div class="link-desc">A full product-catalog storefront for a local awards shop: category pages, 24 product pages, built as a working reference for what a small retailer's site can be.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <div class="link-card" data-venture="personal" style="cursor:default">
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Independent bookstore &amp; bindery — client site in final revie"><use href="assets/cz-icons.svg#cz-bindery"></use></svg></span>
+    <div class="link-text">
+      <div class="link-title">Independent bookstore &amp; bindery — client site in final review</div>
+      <div class="link-desc">A complete site build for a family-run used bookstore and book-repair bindery in Pennsylvania: copy from the owner's own voice, local-discovery pages, print collateral. Launching with the owner's sign-off.</div>
+    </div>
+  </div>
+
+  <a href="https://media-intel-daily.netlify.app" target="_blank" rel="noopener" class="link-card" data-venture="personal">
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Media Intel Daily — a self-running publication"><use href="assets/cz-icons.svg#cz-publication"></use></svg></span>
+    <div class="link-text">
+      <div class="link-title">Media Intel Daily — a self-running publication</div>
+      <div class="link-desc">An automated daily media-intelligence digest: collection, synthesis, and publishing run on a schedule with no hands on it. Proof the automation work I sell actually runs.</div>
+    </div>
+    <span class="link-arrow">→</span>
+  </a>
+
+  <a href="https://zbdconsulting.com" target="_blank" rel="noopener" class="link-card plausible-event-name=czorg-home-consulting-cta" data-venture="os">
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Hire me for project work"><use href="assets/cz-icons.svg#cz-hire"></use></svg></span>
+    <div class="link-text">
+      <div class="link-title">Hire me for project work</div>
+      <div class="link-desc">Sites, dashboards, and AI-powered operations builds for small businesses — through ZBD Consulting. Fixed scope, owned outright, no subscriptions.</div>
     </div>
     <span class="link-arrow">→</span>
   </a>
@@ -322,7 +381,7 @@ body {
   <div class="section-label">Content</div>
 
   <a href="/essays/" rel="noopener" class="link-card" data-venture="personal">
-    <span class="link-icon">✍️</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Essays"><use href="assets/cz-icons.svg#cz-essay"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Essays</div>
       <div class="link-desc">On building durable businesses with AI, from the operator's chair. Start with "Rented Intelligence."</div>
@@ -331,7 +390,7 @@ body {
   </a>
 
   <a href="https://myeverydaydriver.com/blog" target="_blank" rel="noopener" class="link-card" data-venture="med">
-    <span class="link-icon">📝</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="MED Blog"><use href="assets/cz-icons.svg#cz-post"></use></svg></span>
     <div class="link-text">
       <div class="link-title">MED Blog</div>
       <div class="link-desc">Repair cost benchmarks, ownership guides, and straight answers.</div>
@@ -340,7 +399,7 @@ body {
   </a>
 
   <a href="https://zbdos.com/blog/" target="_blank" rel="noopener" class="link-card" data-venture="os">
-    <span class="link-icon">📝</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="The Operator Briefing"><use href="assets/cz-icons.svg#cz-post"></use></svg></span>
     <div class="link-text">
       <div class="link-title">The Operator Briefing</div>
       <div class="link-desc">Frameworks, systems, and lessons for solo operators building with AI.</div>
@@ -349,7 +408,7 @@ body {
   </a>
 
   <a href="https://myeverydaydriver.com/guide" target="_blank" rel="noopener" class="link-card" data-venture="med">
-    <span class="link-icon">📖</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="The Driver&#x27;s Survival Guide"><use href="assets/cz-icons.svg#cz-guide"></use></svg></span>
     <div class="link-text">
       <div class="link-title">The Driver's Survival Guide</div>
       <div class="link-desc">14 chapters on repair decisions, maintenance, buying, and ownership. Coming soon.</div>
@@ -363,7 +422,7 @@ body {
   <div class="section-label">Free Tools</div>
 
   <a href="https://app.myeverydaydriver.com" target="_blank" rel="noopener" class="link-card" data-venture="med">
-    <span class="link-icon">🛠️</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Repair vs. Replace Tool"><use href="assets/cz-icons.svg#cz-tool"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Repair vs. Replace Tool</div>
       <div class="link-desc">Run your numbers. Get a clear answer. No account needed.</div>
@@ -372,7 +431,7 @@ body {
   </a>
 
   <a href="https://myeverydaydriver.com/resources" target="_blank" rel="noopener" class="link-card" data-venture="med">
-    <span class="link-icon">🔗</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Driver Resource Hub"><use href="assets/cz-icons.svg#cz-hub"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Driver Resource Hub</div>
       <div class="link-desc">Every tool and reference mentioned in the book, organized and free.</div>
@@ -386,7 +445,7 @@ body {
   <div class="section-label">Contact</div>
 
   <a href="mailto:hello@zbdos.com" class="link-card" data-venture="personal" id="contact-card">
-    <span class="link-icon">✉️</span>
+    <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Email"><use href="assets/cz-icons.svg#cz-email"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Email</div>
       <div class="link-desc" id="contact-email-display">hello@zbdos.com — click to copy (or open in email app)</div>

@@ -22,7 +22,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root{
   --bg:#0D1117; --bg2:#161B22; --rule:#21262D;
-  --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#6B7280;
+  --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#8A919D; /* was #6B7280 = 3.58:1 on --bg2, FAILED AA body. It carried .link-desc on every link row, plus .section-label, .location and .footer -- all under 13px, so the 3:1 large-text exemption never applied. Measured + corrected 2026-09-03. */
   --gold:#C9922A; --gold-light:#E8B84B; --orange:#E8651A; --white:#fff;
 }
 html{scroll-behavior:smooth;}

@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<!--
+  chriszimmerman.org icon set — v01, 2026-09-03
+  Replaces 17 placeholder emoji on the link page.
+
+  WHY THIS IS NOT THE MED SET RECOLOURED
+    The two sites cross-link constantly. If a reader cannot tell which
+    brand they are looking at from the icon language alone, the icons
+    are doing nothing. So the sets differ in CONSTRUCTION, not palette:
+
+      MED           1.75 stroke · ROUND caps · round joins · organic
+                    tool shapes. A shop floor. Something you pick up.
+      chriszimmerman 1.5 stroke · SQUARE caps · MITER joins · strict
+                    orthogonal + 45 degree geometry. A drafting table.
+                    Something you draw.
+
+    That reads at 16px, which is the only size that matters here.
+
+  GROUND
+    This site is DARK-FIRST: #0d1117 ground, #e8e4dc text, brass
+    #c9922a / #e8b84b accent, IBM Plex Mono + Instrument Serif.
+    Icons inherit currentColor and are drawn to hold up on dark first,
+    light second — the opposite of the MED set's priority.
+
+  CONSTRUCTION
+    grid    24x24 viewBox, 20x20 live area, 2px optical padding
+    stroke  1.5, currentColor, butt caps, miter joins, no fill
+    angles  0, 45, 90 only. No arbitrary curves. Circles only where
+            the subject is genuinely round (scan sweep, nib well).
+
+  USAGE
+    <svg class="cz-icon" viewBox="0 0 24 24"><use href="assets/cz-icons.svg#cz-essay"/></svg>
+    .cz-icon{width:20px;height:20px;fill:none;stroke:currentColor;
+             stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter}
+-->
+
+<!-- ═══ IDENTITY ═══ -->
+
+<symbol id="cz-army" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Army veteran</title>
+  <!-- Sergeant chevrons. Three, pointing up, on the 45. His own rank
+       language — not a generic medal or star. -->
+  <path d="M4 12.5 12 6l8 6.5"/>
+  <path d="M4 16 12 9.5l8 6.5"/>
+  <path d="M4 19.5 12 13l8 6.5"/>
+</symbol>
+
+<symbol id="cz-building" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>What I'm building now</title>
+  <!-- Three stacked courses, the top one still open on the right.
+       "In progress" said structurally, not with a crane or a hard hat. -->
+  <path d="M3.5 20.5h17"/>
+  <path d="M3.5 20.5v-4h13v4"/>
+  <path d="M3.5 16.5v-4h9v4"/>
+  <path d="M3.5 12.5v-4h5v4"/>
+  <path d="M14.5 10.5h6M17.5 7.5v6"/>
+</symbol>
+
+<!-- ═══ VENTURES ═══ -->
+
+<symbol id="cz-venture-med" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>My Everyday Driver</title>
+  <!-- The same sedan MED draws, rebuilt on the orthogonal grid: flat
+       roof break, square corners. Deliberately the geometric cousin. -->
+  <path d="M3 15.5h18"/>
+  <path d="M3 15.5v-3l2-4.5h14l2 4.5v3"/>
+  <path d="M5 12.5h14"/>
+  <path d="M6 15.5v2.5M18 15.5v2.5"/>
+</symbol>
+
+<symbol id="cz-venture-os" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Operator Stack</title>
+  <!-- One vault, layered. Three tiers plus a spine on the left: the
+       product's own claim is "one vault, persistent context." -->
+  <path d="M3.5 7.5h17v3.5h-17zM3.5 13h17v3.5h-17z"/>
+  <path d="M3.5 4h17"/>
+  <path d="M3.5 18.5h17"/>
+  <path d="M7 9.2h1.5M7 14.7h1.5"/>
+</symbol>
+
+<symbol id="cz-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Business intelligence scan</title>
+  <!-- A sweep, not a magnifier. MED owns the magnifier; this is the
+       radar read of a whole business, which is what the scan is. -->
+  <circle cx="12" cy="12" r="8.5"/>
+  <circle cx="12" cy="12" r="4.2"/>
+  <path d="M12 12 18 6"/>
+  <path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2"/>
+</symbol>
+
+<!-- ═══ WORK ═══ -->
+
+<symbol id="cz-portfolio" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Built and operated</title>
+  <!-- A drawing sheet with a title block, bottom right. The single
+       most literal object on a drafting table. -->
+  <path d="M3.5 4.5h17v15h-17z"/>
+  <path d="M13.5 19.5v-4h7"/>
+  <path d="M6.5 8h7M6.5 11h9M6.5 14h4"/>
+</symbol>
+
+<symbol id="cz-storefront" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Storefront pilot</title>
+  <!-- Flat canopy, square bay. No scallops — a scalloped awning reads
+       retail-bakery and these are engineering-built stores. -->
+  <path d="M3 9.5 5 4.5h14l2 5"/>
+  <path d="M3 9.5h18"/>
+  <path d="M4.5 9.5v10h15v-10"/>
+  <path d="M8.5 19.5v-6h7v6"/>
+</symbol>
+
+<symbol id="cz-bindery" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Bookstore and bindery</title>
+  <!-- Three spines shelved, one leaning. The lean is the whole icon —
+       upright-only reads as a bar chart. -->
+  <path d="M4 5.5h3.5v14H4zM9 5.5h3.5v14H9z"/>
+  <path d="m14.6 6.6 3.4.9-3.4 12.6-3.3-.9z"/>
+  <path d="M4 9h3.5M9 9h3.5"/>
+</symbol>
+
+<symbol id="cz-publication" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Publication</title>
+  <!-- Broadsheet: masthead rule, lead column, folded second sheet.
+       Media Intel Daily is a publication, not a "feed". -->
+  <path d="M3.5 5.5h13v14h-13z"/>
+  <path d="M16.5 8.5h4v9a2 2 0 0 1-2 2h-2"/>
+  <path d="M6 8.5h8"/>
+  <path d="M6 11.5h3.5v5H6zM11.5 11.5h2.5M11.5 14h2.5M11.5 16.5h2.5"/>
+</symbol>
+
+<symbol id="cz-hire" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Hire me</title>
+  <!-- A signed sheet. A handshake is the stock-photo of icons; a
+       signature line is what actually happens. -->
+  <path d="M4.5 3.5h11l4 4v13h-15z"/>
+  <path d="M15.5 3.5v4h4"/>
+  <path d="M7.5 16.5h9"/>
+  <path d="M8 14.2c1.6-2.6 2.6-2.6 3.2-1.3.5 1.1 1.2 1.1 1.8 0 .6-1.2 1.6-1.4 3 1.3"/>
+</symbol>
+
+<!-- ═══ WRITING ═══ -->
+
+<symbol id="cz-essay" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Essays</title>
+  <!-- A nib, from directly above: slit, breather hole, shoulders.
+       The one place a circle earns its keep in this set. -->
+  <path d="M12 3.5 16.5 13 12 20.5 7.5 13z"/>
+  <path d="M12 8.6v11.9"/>
+  <circle cx="12" cy="7.2" r="1.15"/>
+</symbol>
+
+<symbol id="cz-post" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Blog post</title>
+  <!-- Article with a pulled heading rule. Distinct from cz-essay
+       (authoring) and cz-guide (a bound thing you keep). -->
+  <path d="M4.5 4.5h15v15h-15z"/>
+  <path d="M7.5 8h6"/>
+  <path d="M7.5 11.5h9M7.5 14h9M7.5 16.5h5"/>
+</symbol>
+
+<symbol id="cz-guide" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>The guide</title>
+  <!-- Closed book, seen spine-on with the board overhang. A bound
+       object, not an open book — you own this one. -->
+  <path d="M6 3.5h13v17H6z"/>
+  <path d="M6 3.5a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2"/>
+  <path d="M9.5 8h6M9.5 11h6"/>
+</symbol>
+
+<!-- ═══ TOOLS & CONTACT ═══ -->
+
+<symbol id="cz-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Decision tool</title>
+  <!-- Two sliders at different settings — a thing you operate to reach
+       a decision. A calculator would have collided with cz-post. -->
+  <path d="M3.5 4.5h17v15h-17z"/>
+  <path d="M6.5 10h11M6.5 15h11"/>
+  <path d="M9.5 8v4M14.5 13v4"/>
+</symbol>
+
+<symbol id="cz-hub" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Resource hub</title>
+  <!-- An index grid, one cell keyed. Says "many things, catalogued"
+       rather than a chain-link, which says "a URL". -->
+  <path d="M3.5 3.5h7v7h-7zM13.5 3.5h7v7h-7zM3.5 13.5h7v7h-7zM13.5 13.5h7v7h-7z"/>
+  <path d="M15.8 17h2.4M17 15.8v2.4"/>
+</symbol>
+
+<symbol id="cz-email" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Email</title>
+  <!-- Envelope with a true 45-degree flap that meets the corners —
+       most envelope icons fake the angle and it shows at 24px. -->
+  <path d="M3 6h18v12H3z"/>
+  <path d="m3 6 9 7 9-7"/>
+</symbol>
+
+<symbol id="cz-advisory" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter">
+  <title>Advisory</title>
+  <!-- A quote sheet with a currency rule. This row sends the reader to
+       MED's paid offer, so it must read as PRICED, not as advice. -->
+  <path d="M4.5 3.5h11l4 4v13h-15z"/>
+  <path d="M15.5 3.5v4h4"/>
+  <path d="M12 10v7"/>
+  <path d="M14 11.6h-3.2a1.4 1.4 0 0 0 0 2.8h2.4a1.4 1.4 0 0 1 0 2.8H10"/>
+</symbol>
+</svg>
