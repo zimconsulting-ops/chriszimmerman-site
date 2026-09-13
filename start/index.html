@@ -273,10 +273,9 @@ h1 em { color: var(--gold); font-style: italic; }
            visitor cannot debug. JS swaps the text on a media error. -->
       <div class="video-placeholder" id="videoPlaceholder" role="status" aria-live="polite">
         <div class="state-mark" aria-hidden="true">&#9633;</div>
-        <div class="placeholder-label" id="placeholderLabel">Note in writing below</div>
+        <div class="placeholder-label" id="placeholderLabel">Video didn't load</div>
         <p class="placeholder-note" id="placeholderNote">
-          A short video is going here. Everything it says is written out below, so
-          there is nothing to wait for.
+          No matter &mdash; everything it says is written out below.
         </p>
       </div>
 
@@ -353,8 +352,13 @@ h1 em { color: var(--gold); font-style: italic; }
    autoplay with sound, so this video cannot start talking on its own.
    Choose that frame deliberately.
    ------------------------------------------------------------------ */
-var VIDEO_SRC  = "";
-var POSTER_SRC = "";
+var VIDEO_SRC  = "/start/montage.mp4";
+var POSTER_SRC = "/start/montage-poster.jpg";
+
+/* HOLDING PIECE, not the note. 26s, silent, built from owned material only
+   (tools/video/build_start_montage.py). It exists so a QR arrival sees a person
+   instead of an empty frame. When Chris records the real hour, both lines above
+   point at that file and everything below keeps working unchanged. */
 
 (function () {
   if (!VIDEO_SRC) return;
