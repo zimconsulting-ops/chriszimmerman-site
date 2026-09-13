@@ -19,12 +19,26 @@
 <meta name="twitter:description" content="A short note about what I'm building, and one small ask.">
 <meta name="twitter:image" content="https://chriszimmerman.org/headshot.jpg">
 
-<!-- Plausible (tagged events): start-view, start-video-play, start-share-click, start-hub-click -->
+<!-- Plausible (tagged events): start-view, start-video-play, start-video-unavailable,
+     start-share-click, start-hub-click -->
 <script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+<!-- THE QUEUE STUB IS NOT OPTIONAL. The script above is `defer`, so it executes AFTER
+     the document is parsed -- which is after any inline script further down has already
+     run. Without this stub, `window.plausible` is undefined at that moment and an early
+     call is silently dropped. Measured on the first build of this page: start-view never
+     fired. This buffers early calls and the real script flushes the queue on load. -->
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Loaded NON-render-blocking. A QR scan opens an in-app webview on a phone, often on
+     bad signal; a plain <link rel=stylesheet> to a third-party host holds first paint
+     until the request resolves OR the webview's timeout expires. The page is designed to
+     be legible in the system-font fallback, so the fonts are an upgrade, not a
+     dependency, and must never gate the message. -->
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -83,30 +97,47 @@ h1 em { color: var(--gold); font-style: italic; }
 
 /* VIDEO */
 .video-section { margin: 34px 0 30px; }
+/* 16:9 box. The padding-top ratio is the BASE, not the fallback-of-last-resort:
+   an engine without `aspect-ratio` would otherwise give this element zero height,
+   and since its only child is absolutely positioned the whole video area -- frame,
+   placeholder and all -- would silently vanish. Old webviews are exactly the
+   audience here, so the ancient technique is the default and aspect-ratio is the
+   progressive enhancement. */
 .video-frame {
   position: relative; width: 100%;
-  aspect-ratio: 16 / 9;
+  padding-top: 56.25%;
   background: var(--bg2);
   border: 1px solid var(--rule); border-radius: 6px;
   overflow: hidden;
 }
-.video-frame video { width: 100%; height: 100%; display: block; object-fit: cover; background: #000; }
+@supports (aspect-ratio: 16 / 9) {
+  .video-frame { padding-top: 0; aspect-ratio: 16 / 9; }
+}
+.video-frame video {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; display: block; object-fit: cover; background: #000;
+}
 
 /* Placeholder state — shown when no video is wired yet. Designed, not broken:
    a visitor who arrives before the recording exists still gets a real page. */
 .video-placeholder {
-  position: absolute; inset: 0;
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 14px; text-align: center; padding: 24px;
+  gap: 13px; text-align: center; padding: 24px;
   background:
     radial-gradient(120% 120% at 50% 0%, #1b2230 0%, var(--bg2) 55%, #12171f 100%);
 }
-.play-ring {
-  width: 62px; height: 62px; border-radius: 50%;
-  border: 1px solid var(--gold); color: var(--gold);
+/* DELIBERATELY NOT A PLAY BUTTON.
+   The first build put a gold ▶ ring here. It had no handler and could not have one
+   -- there is no video yet -- so every visitor would tap the focal point of the page
+   and get nothing, right after the line above promised them two minutes of video.
+   An affordance that does nothing is worse than no affordance. This mark is a
+   neutral state glyph: square, muted, obviously not a control. */
+.state-mark {
+  width: 34px; height: 34px; border-radius: 3px;
+  border: 1px solid var(--rule); background: rgba(255,255,255,0.02);
   display: flex; align-items: center; justify-content: center;
-  font-size: 19px; line-height: 1; padding-left: 5px;
-  opacity: 0.75;
+  color: var(--txt3); font-size: 15px; line-height: 1;
 }
 .placeholder-label {
   font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
@@ -169,6 +200,23 @@ h1 em { color: var(--gold); font-style: italic; }
 .btn.secondary { background: transparent; color: var(--gold); }
 .btn.secondary:hover { background: rgba(201, 146, 42, 0.1); }
 
+/* Scoped `.ask .fallback-share`, NOT `.fallback-share`. The bare class is specificity
+   0,1,0 and loses to `.ask p` at 0,1,1 -- so font-size, colour and line-height were all
+   silently overridden and only margin-top survived. The rule looked right and did almost
+   nothing. */
+.ask .fallback-share {
+  margin-top: 16px; font-size: 13px; color: var(--txt3); line-height: 1.6;
+  margin-bottom: 0;
+}
+.ask .fallback-share .url {
+  font-family: 'IBM Plex Mono', monospace; color: var(--txt2);
+  font-size: 12.5px; letter-spacing: 0.01em;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--rule);
+  word-break: break-all;
+}
+.ask .fallback-share .url:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
 /* THE QUIET LINE OUT — for the curious. Not a second ask. */
 .hub-line {
   text-align: center; font-size: 14px; color: var(--txt3);
@@ -202,9 +250,13 @@ h1 em { color: var(--gold); font-style: italic; }
     <div class="avatar"><img src="/headshot.jpg" alt="Christian Zimmerman" width="68" height="68"></div>
     <div class="eyebrow">Start here</div>
     <h1>I've been building <em>something</em></h1>
+    <!-- This line must be true with the video absent, blocked, or unplayed. It used to
+         open "Two minutes on what it is and why", which promised a video that is not
+         recorded yet -- a promise the page then broke for every visitor. Say what the
+         PAGE gives, not what the video will. -->
     <p class="standfirst">
-      Two minutes on what it is and why — and one small thing you can do that would help
-      more than you'd think.
+      The short version of what I've been building — and one small thing you can do
+      that would help more than you'd think.
     </p>
   </header>
 
@@ -216,11 +268,15 @@ h1 em { color: var(--gold); font-style: italic; }
   <section class="video-section">
     <div class="video-frame" id="videoFrame">
 
-      <div class="video-placeholder" id="videoPlaceholder">
-        <div class="play-ring">&#9654;</div>
-        <div class="placeholder-label">Video coming</div>
-        <p class="placeholder-note">
-          The note below says the same thing in writing. Nothing here depends on the video.
+      <!-- Two DISTINCT states, because "not recorded yet" and "it failed to load" are
+           different facts and showing the first when the second is true is a lie the
+           visitor cannot debug. JS swaps the text on a media error. -->
+      <div class="video-placeholder" id="videoPlaceholder" role="status" aria-live="polite">
+        <div class="state-mark" aria-hidden="true">&#9633;</div>
+        <div class="placeholder-label" id="placeholderLabel">Note in writing below</div>
+        <p class="placeholder-note" id="placeholderNote">
+          A short video is going here. Everything it says is written out below, so
+          there is nothing to wait for.
         </p>
       </div>
 
@@ -262,6 +318,20 @@ h1 em { color: var(--gold); font-style: italic; }
         See everything I'm building
       </a>
     </div>
+    <!-- THE ASK MUST NOT DEPEND ON mailto:. This page is reached by QR, which usually
+         opens an in-app webview (Messages, Facebook, Instagram) where mailto handling is
+         inconsistent and a tagged click may be intercepted before it navigates. If that
+         button does nothing, the one ask on the page dies silently. So the URL is also
+         here as plain selectable text -- no handler, no script, nothing to block. -->
+    <!-- A REAL LINK, not styled text. As plain text it was the most tap-inviting
+         element on the page and a tap did nothing -- `user-select:all` only helps on
+         long-press. As an anchor, a tap is harmless (it is this page) and a long-press
+         gives the native Copy / Share sheet, which is the action actually wanted.
+         Carries no `plausible-event-` class, so nothing binds a click handler to it and
+         it survives a blocked analytics script. -->
+    <p class="fallback-share">
+      Or send them the link: <a class="url" href="/start">chriszimmerman.org/start</a>
+    </p>
   </section>
 
   <p class="hub-line">
@@ -292,6 +362,29 @@ var POSTER_SRC = "";
   var frame = document.getElementById('videoFrame');
   var placeholder = document.getElementById('videoPlaceholder');
 
+  var label = document.getElementById('placeholderLabel');
+  var note  = document.getElementById('placeholderNote');
+
+  function fallBackToNote(reason) {
+    /* Cancel the watchdog FIRST. Without this, a fast 404 fires `error` at ~300ms,
+       falls back correctly, and then the timer fires anyway at 8s and reports a
+       second `start-video-unavailable` with reason 'timeout' -- so every 404 is
+       counted as a 404 AND a hang. The DOM writes are idempotent; the analytics
+       were not. */
+    alive();
+    /* removeChild, not .remove(): ChildNode.remove() is absent on Android Browser
+       4.3 and earlier, where the throw would happen BEFORE the label swap below
+       and the visitor would be left with the broken embed and no fallback -- the
+       error handler becoming the error. */
+    if (v && v.parentNode) v.parentNode.removeChild(v);
+    if (label) label.textContent = 'Video unavailable';
+    if (note) note.textContent =
+      'The video would not load here. Everything it says is written out below, ' +
+      'so you are not missing anything.';
+    if (placeholder) placeholder.style.display = '';
+    if (window.plausible) window.plausible('start-video-unavailable', {props: {reason: reason}});
+  }
+
   var v = document.createElement('video');
   v.setAttribute('controls', '');
   v.setAttribute('playsinline', '');        /* iOS: play inline, not fullscreen takeover */
@@ -300,16 +393,48 @@ var POSTER_SRC = "";
   if (POSTER_SRC) v.setAttribute('poster', POSTER_SRC);
   v.src = VIDEO_SRC;
 
-  /* If the file 404s or the codec is refused, put the designed placeholder back
-     rather than leaving a black rectangle. A broken embed reads as a broken page. */
-  v.addEventListener('error', function () {
-    v.remove();
-    if (placeholder) placeholder.style.display = '';
+  /* A 404 or a refused codec fires `error` fast, and this restores the note. */
+  v.addEventListener('error', function () { fallBackToNote('error'); });
+
+  /* `error` IS NOT THE ONLY FAILURE. A dead zone or a captive portal that never
+     answers fires no error at all -- the request hangs and the visitor watches a
+     black rectangle until the network stack gives up.
+
+     THE FIRST VERSION OF THIS WATCHDOG WAS WRONG, and the way it was wrong matters:
+     it started an 8s timer on element creation and cleared it only on
+     `loadedmetadata`/`canplay`/`playing`. That tears out a WORKING video in two
+     ordinary cases -- iOS Low Power Mode and Chrome Data Saver downgrade
+     `preload=metadata` to none, so no request is made until the visitor taps play
+     and metadata never arrives; and on a slow link the first bytes can take longer
+     than 8s while arriving perfectly well. It would have declared "unavailable" over
+     a player the visitor was about to use.
+
+     So the timer now measures SILENCE, not elapsed time. `progress` means bytes are
+     arriving; `suspend` with readyState 0 means the browser has deliberately deferred
+     loading and is not stuck at all. Either one disarms it. Only genuine silence --
+     no bytes, no deferral, nothing -- reaches the fallback. */
+  var watchdog = null;
+  function alive() { if (watchdog) { clearTimeout(watchdog); watchdog = null; } }
+  function arm() { alive(); watchdog = setTimeout(function () { fallBackToNote('timeout'); }, 8000); }
+
+  v.addEventListener('loadedmetadata', alive);
+  v.addEventListener('canplay', alive);
+  v.addEventListener('playing', alive);
+  /* Bytes are moving -- restart the clock rather than cancel it, so a connection
+     that dies MID-transfer is still caught. */
+  v.addEventListener('progress', arm);
+  /* The browser chose to stop loading. That is a decision, not a stall. */
+  v.addEventListener('suspend', function () { if (v.readyState === 0) alive(); });
+
+  v.addEventListener('play', function playOnce() {
+    v.removeEventListener('play', playOnce);   /* not {once:true}: older engines read
+                                                  the options object as useCapture and
+                                                  the handler then fires on every
+                                                  resume, inflating the metric */
+    if (window.plausible) window.plausible('start-video-play');
   });
 
-  v.addEventListener('play', function () {
-    if (window.plausible) window.plausible('start-video-play');
-  }, { once: true });
+  arm();
 
   /* Deliberately NO 'ended' handler. The page is the destination. */
 
