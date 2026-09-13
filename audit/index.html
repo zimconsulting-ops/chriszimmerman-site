@@ -510,8 +510,23 @@ footer a:hover { text-decoration: underline; }
         <li>30-day week-by-week action plan</li>
         <li>14 days of async follow-up Q&amp;A</li>
       </ul>
-      <!-- TODO: Replace with live Stripe Payment Link -->
-      <a class="btn btn-primary" href="STRIPE_PAYMENT_LINK_PENDING" style="font-size:1rem;padding:16px 32px;">Pay $349 · Get the form</a>
+      <!-- DEAD BUTTON REPLACED 2026-09-13. This said "Pay $349" and pointed at the
+           literal string STRIPE_PAYMENT_LINK_PENDING, so every click on a live page
+           went to a 404. Three "Pay $349" affordances sit on this page; the other two
+           are anchors to #pay and merely scrolled the buyer here, to a button that
+           could not take the money. A checkout that looks real and is not costs more
+           than no checkout at all.
+
+           TO RESTORE THE REAL CHECKOUT: create the Stripe Payment Link (Chris's --
+           money elevates), then swap the href below for it and restore the original
+           label. Nothing else on this page needs to change. -->
+      <a class="btn btn-primary"
+         href="mailto:chris@chriszimmerman.org?subject=BI%20Scan%20%E2%80%94%20%24349&amp;body=I%27d%20like%20to%20book%20the%20%24349%20audit.%20Please%20send%20the%20payment%20link%20and%20the%20intake%20form."
+         style="font-size:1rem;padding:16px 32px;">Request the $349 audit</a>
+      <p style="margin-top:12px;font-size:.85rem;opacity:.72;">
+        Card checkout is being switched over &mdash; email gets you the link and the
+        intake form the same day.
+      </p>
     </div>
   </section>
 
