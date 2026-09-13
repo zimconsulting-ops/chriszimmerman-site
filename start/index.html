@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here — Christian Zimmerman</title>
+<meta name="description" content="A short note from Christian Zimmerman about what he's building, and one small ask.">
+<link rel="canonical" href="https://chriszimmerman.org/start">
+
+<!-- Open Graph / Twitter. This link WILL be forwarded; a forwarded link with no card
+     is a forwarded link nobody opens. -->
+<meta property="og:title" content="Start Here — Christian Zimmerman">
+<meta property="og:description" content="A short note about what I'm building, and one small ask.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/start">
+<meta property="og:image" content="https://chriszimmerman.org/headshot.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Start Here — Christian Zimmerman">
+<meta name="twitter:description" content="A short note about what I'm building, and one small ask.">
+<meta name="twitter:image" content="https://chriszimmerman.org/headshot.jpg">
+
+<!-- Plausible (tagged events): start-view, start-video-play, start-share-click, start-hub-click -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0D1117;
+  --bg2: #161B22;
+  --rule: #21262D;
+  --txt1: #E8E4DC;
+  --txt2: #9CA3AF;
+  --txt3: #8A919D;
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --green: #4caf7a;
+  --white: #ffffff;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--txt1);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+  padding: 40px 20px 56px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { width: 100%; max-width: 640px; margin: 0 auto; }
+
+/* HEADER — deliberately small. The video is the page. */
+.header { text-align: center; margin-bottom: 30px; }
+.avatar {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: var(--bg2); border: 2px solid var(--rule);
+  margin: 0 auto 16px; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+}
+h1 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(30px, 6vw, 42px); line-height: 1.12;
+  color: var(--white); letter-spacing: -0.01em; margin-bottom: 14px;
+}
+h1 em { color: var(--gold); font-style: italic; }
+
+/* The muted sentence. The page must make sense with the sound off and the
+   video unplayed -- mobile browsers block autoplay with sound, so this line
+   is doing real work, not decoration. */
+.standfirst {
+  color: var(--txt2); font-size: 16px; line-height: 1.65;
+  max-width: 500px; margin: 0 auto;
+}
+
+/* VIDEO */
+.video-section { margin: 34px 0 30px; }
+.video-frame {
+  position: relative; width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg2);
+  border: 1px solid var(--rule); border-radius: 6px;
+  overflow: hidden;
+}
+.video-frame video { width: 100%; height: 100%; display: block; object-fit: cover; background: #000; }
+
+/* Placeholder state — shown when no video is wired yet. Designed, not broken:
+   a visitor who arrives before the recording exists still gets a real page. */
+.video-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 24px;
+  background:
+    radial-gradient(120% 120% at 50% 0%, #1b2230 0%, var(--bg2) 55%, #12171f 100%);
+}
+.play-ring {
+  width: 62px; height: 62px; border-radius: 50%;
+  border: 1px solid var(--gold); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; line-height: 1; padding-left: 5px;
+  opacity: 0.75;
+}
+.placeholder-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--txt3);
+}
+.placeholder-note {
+  font-size: 13.5px; color: var(--txt2); max-width: 330px; line-height: 1.6;
+}
+
+/* THE WRITTEN VERSION — never a hard dependency on the video.
+   Hotel wifi, a dead zone, a blocked embed: the note still reads. */
+.note {
+  border-left: 2px solid var(--rule);
+  padding: 2px 0 2px 20px;
+  margin-bottom: 34px;
+}
+.note p { color: var(--txt2); font-size: 15.5px; line-height: 1.72; margin-bottom: 14px; }
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--txt1); font-weight: 500; }
+
+/* THE ASK — one ask, not three. */
+.ask {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 26px 28px;
+  margin-bottom: 26px;
+}
+.ask-label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ask-label::before {
+  content: ''; width: 20px; height: 1px; background: var(--gold);
+  display: block; flex-shrink: 0;
+}
+.ask h2 {
+  font-family: 'Instrument Serif', serif; font-weight: 400;
+  font-size: clamp(21px, 4.2vw, 25px); color: var(--white);
+  line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.01em;
+}
+.ask p { font-size: 14.5px; color: var(--txt2); line-height: 1.68; margin-bottom: 18px; }
+.ask p:last-child { margin-bottom: 0; }
+
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+  letter-spacing: 0.06em;
+  padding: 13px 22px; border-radius: 3px;
+  text-decoration: none; border: 1px solid var(--gold);
+  color: var(--bg); background: var(--gold);
+  transition: background 0.15s, border-color 0.15s;
+  min-height: 46px; /* thumb target on a phone held one-handed */
+}
+.btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.btn.secondary { background: transparent; color: var(--gold); }
+.btn.secondary:hover { background: rgba(201, 146, 42, 0.1); }
+
+/* THE QUIET LINE OUT — for the curious. Not a second ask. */
+.hub-line {
+  text-align: center; font-size: 14px; color: var(--txt3);
+  padding-top: 24px; border-top: 1px solid var(--rule);
+}
+.hub-line a {
+  color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid rgba(201, 146, 42, 0.35); padding-bottom: 1px;
+}
+.hub-line a:hover { border-bottom-color: var(--gold); }
+
+.footer {
+  margin-top: 34px; text-align: center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 10.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--txt3);
+}
+
+@media (max-width: 480px) {
+  body { padding: 30px 18px 44px; }
+  .btn { width: 100%; }
+  .note { padding-left: 16px; }
+  .ask { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="avatar"><img src="/headshot.jpg" alt="Christian Zimmerman" width="68" height="68"></div>
+    <div class="eyebrow">Start here</div>
+    <h1>I've been building <em>something</em></h1>
+    <p class="standfirst">
+      Two minutes on what it is and why — and one small thing you can do that would help
+      more than you'd think.
+    </p>
+  </header>
+
+  <!-- VIDEO.
+       NO auto-redirect when it ends: a QR scan usually opens an in-app browser
+       (Messages, Facebook, Instagram) where programmatic navigation is inconsistent,
+       and a redirect punishes the most engaged viewer by yanking the page mid-rewatch.
+       THE PAGE IS THE DESTINATION. There is nothing to redirect to. -->
+  <section class="video-section">
+    <div class="video-frame" id="videoFrame">
+
+      <div class="video-placeholder" id="videoPlaceholder">
+        <div class="play-ring">&#9654;</div>
+        <div class="placeholder-label">Video coming</div>
+        <p class="placeholder-note">
+          The note below says the same thing in writing. Nothing here depends on the video.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The written version. Independent of the video ON PURPOSE. -->
+  <section class="note">
+    <p>
+      For the last stretch I've been building two things properly, instead of talking
+      about building them.
+    </p>
+    <p>
+      <strong>My Everyday Driver</strong> helps ordinary car owners not get taken advantage
+      of — a second opinion on a repair quote, from someone who spent twenty-five years on
+      the other side of the counter. <strong>Operator Stack</strong> builds the software
+      small local businesses actually need and can own outright, instead of renting forever.
+    </p>
+    <p>
+      That's the whole update. No pitch attached.
+    </p>
+  </section>
+
+  <!-- ONE ask. The approved share-ask from the 2026-06-30 ruling. -->
+  <section class="ask">
+    <div class="ask-label">One small thing</div>
+    <h2>If someone comes to mind, point them my way.</h2>
+    <p>
+      That's it. Not a share, not a repost — just the one person you thought of while
+      reading. A name, an introduction, a forwarded link. That's worth more than
+      anything else I could ask for right now.
+    </p>
+    <div class="btn-row">
+      <a class="btn plausible-event-name=start-share-click"
+         href="mailto:?subject=Something%20Chris%20has%20been%20building&body=Thought%20of%20you%20%E2%80%94%20have%20a%20look%3A%20https%3A%2F%2Fchriszimmerman.org%2Fstart">
+        Forward this to them
+      </a>
+      <a class="btn secondary plausible-event-name=start-hub-click" href="/launching">
+        See everything I'm building
+      </a>
+    </div>
+  </section>
+
+  <p class="hub-line">
+    Curious about the whole picture? <a class="plausible-event-name=start-hub-click" href="/launching">chriszimmerman.org/launching</a>
+  </p>
+
+  <div class="footer">Christian Zimmerman &middot; Wake Forest, NC</div>
+
+</div>
+
+<script>
+/* ------------------------------------------------------------------
+   WIRING THE VIDEO IS A ONE-LINE CHANGE.
+   Set VIDEO_SRC to the file (and POSTER_SRC to the poster frame) and the
+   placeholder is replaced by a real player. Leave it empty and the page
+   still works completely -- the written note carries the message.
+
+   The poster frame is the REAL first impression: mobile browsers block
+   autoplay with sound, so this video cannot start talking on its own.
+   Choose that frame deliberately.
+   ------------------------------------------------------------------ */
+var VIDEO_SRC  = "";
+var POSTER_SRC = "";
+
+(function () {
+  if (!VIDEO_SRC) return;
+
+  var frame = document.getElementById('videoFrame');
+  var placeholder = document.getElementById('videoPlaceholder');
+
+  var v = document.createElement('video');
+  v.setAttribute('controls', '');
+  v.setAttribute('playsinline', '');        /* iOS: play inline, not fullscreen takeover */
+  v.setAttribute('webkit-playsinline', '');
+  v.setAttribute('preload', 'metadata');
+  if (POSTER_SRC) v.setAttribute('poster', POSTER_SRC);
+  v.src = VIDEO_SRC;
+
+  /* If the file 404s or the codec is refused, put the designed placeholder back
+     rather than leaving a black rectangle. A broken embed reads as a broken page. */
+  v.addEventListener('error', function () {
+    v.remove();
+    if (placeholder) placeholder.style.display = '';
+  });
+
+  v.addEventListener('play', function () {
+    if (window.plausible) window.plausible('start-video-play');
+  }, { once: true });
+
+  /* Deliberately NO 'ended' handler. The page is the destination. */
+
+  if (placeholder) placeholder.style.display = 'none';
+  frame.appendChild(v);
+})();
+
+if (window.plausible) window.plausible('start-view');
+</script>
+
+</body>
+</html>
