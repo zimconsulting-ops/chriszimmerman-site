@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Christian Zimmerman</title>
+<meta name="description" content="Things Christian Zimmerman has built and shipped — two businesses, a repair decision tool, an operator product, and the sites they run on.">
+<link rel="canonical" href="https://chriszimmerman.org/work">
+
+<meta property="og:title" content="Work — Christian Zimmerman">
+<meta property="og:description" content="Built and shipped: two businesses, a repair decision tool, an operator product, and the sites they run on.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chriszimmerman.org/work">
+<meta property="og:image" content="https://chriszimmerman.org/headshot.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Work — Christian Zimmerman">
+<meta name="twitter:description" content="Built and shipped.">
+<meta name="twitter:image" content="https://chriszimmerman.org/headshot.jpg">
+
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg:#0D1117; --bg2:#161B22; --rule:#21262D;
+  --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#8A919D;
+  --gold:#C9922A; --gold-light:#E8B84B; --green:#4caf7a; --white:#fff;
+}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--txt1);
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-weight:300; font-size:16px; line-height:1.7;
+  padding:40px 20px 70px; -webkit-font-smoothing:antialiased;
+}
+.container{width:100%;max-width:1040px;margin:0 auto}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;
+  max-width:1040px;margin:0 auto 40px;font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:.06em;color:var(--txt3)}
+.topbar a{color:var(--txt2);text-decoration:none}
+.topbar a:hover{color:var(--gold)}
+
+header.head{padding-bottom:34px;border-bottom:1px solid var(--rule);margin-bottom:44px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1{font-family:'Instrument Serif',serif;font-weight:400;
+  font-size:clamp(34px,6vw,54px);line-height:1.06;color:var(--white);
+  letter-spacing:-.01em;margin-bottom:16px;text-wrap:balance}
+h1 em{color:var(--gold);font-style:italic}
+.bio{color:var(--txt2);font-size:16.5px;max-width:60ch}
+.bio strong{color:var(--txt1);font-weight:500}
+
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.item{background:var(--bg2);border:1px solid var(--rule);border-radius:4px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .2s}
+.item:hover{border-color:var(--gold)}
+.shot{display:block;width:100%;height:auto;aspect-ratio:960/600;object-fit:cover;
+  object-position:top center;background:var(--bg);border-bottom:1px solid var(--rule)}
+.item-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.item-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.item-name{font-family:'Instrument Serif',serif;font-size:23px;color:var(--white);
+  letter-spacing:-.01em;line-height:1.2}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;padding:4px 9px;border-radius:2px;white-space:nowrap;
+  background:rgba(76,175,122,.15);color:var(--green);flex-shrink:0}
+.item-what{color:var(--txt2);font-size:14.5px;line-height:1.62}
+.item-what b{color:var(--txt1);font-weight:500}
+.item-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:auto;padding-top:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.04em}
+.item-links a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;
+  padding-bottom:2px;transition:border-color .15s}
+.item-links a:hover{border-bottom-color:var(--gold)}
+
+.section{margin-bottom:56px}
+
+.note{background:var(--bg2);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;
+  padding:22px 26px;margin-top:8px;max-width:66ch}
+.note p{color:var(--txt2);font-size:15px;line-height:1.7}
+.note p+p{margin-top:.75em}
+.note strong{color:var(--txt1);font-weight:500}
+
+.footer{margin-top:56px;padding-top:26px;border-top:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--txt3);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer a{color:var(--txt2);text-decoration:none}
+.footer a:hover{color:var(--gold)}
+
+@media (max-width:560px){
+  body{padding:28px 16px 50px}
+  .grid{grid-template-columns:1fr;gap:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/">chriszimmerman.org</a>
+  <a href="/launching">What I'm building &rarr;</a>
+</div>
+
+<div class="container">
+
+  <header class="head">
+    <div class="eyebrow">Work</div>
+    <h1>Things I've <em>actually shipped</em>.</h1>
+    <p class="bio">
+      Army vet, 25+ years in the auto industry &mdash; mechanic, shop manager, service
+      operations. Now building AI-powered tools and businesses as a solo operator in Wake
+      County, NC. <strong>Everything below is live and you can open it.</strong>
+    </p>
+  </header>
+
+  <!-- ============ BUSINESSES ============ -->
+  <section class="section">
+    <div class="section-label">Businesses</div>
+    <div class="grid">
+
+      <article class="item">
+        <img class="shot" src="shots/med.jpg" alt="My Everyday Driver homepage" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">My Everyday Driver</span>
+            <span class="tag">Live</span>
+          </div>
+          <p class="item-what">A second opinion on a repair estimate, for people who don't have
+            a mechanic they trust. <b>$49, written, sourced.</b> Built on twenty-five years of
+            standing on the other side of that counter.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-med" href="https://myeverydaydriver.com">myeverydaydriver.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <img class="shot" src="shots/zbds.jpg" alt="ZBD Solutions homepage" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">ZBD Solutions</span>
+            <span class="tag">Live</span>
+          </div>
+          <p class="item-what">AI agents built into how a local trades business already works,
+            then <b>run and tuned every month</b> &mdash; plus one-time tools they own outright.
+            I drive out and install it.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-zbds" href="https://zbdconsulting.com">zbdconsulting.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTS + TOOLS ============ -->
+  <section class="section">
+    <div class="section-label">Products and tools</div>
+    <div class="grid">
+
+      <article class="item">
+        <img class="shot" src="shots/operatorstack.jpg" alt="Operator Stack sales page" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">Operator Stack</span>
+            <span class="tag">Shipping</span>
+          </div>
+          <p class="item-what">A structured vault that gives Claude persistent context &mdash;
+            <b>17 skills, 10 SOPs</b>, brand, offers, decisions and work queue, loaded at the
+            start of every session. Bought once, owned outright.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-os" href="https://zbdos.com">zbdos.com</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <img class="shot" src="shots/med-app.jpg" alt="Should I Fix This — repair decision tool" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">Should I Fix This?</span>
+            <span class="tag">Live</span>
+          </div>
+          <p class="item-what">A repair decision tool. Vehicle, mileage, the quote, what the car
+            is worth, your situation &mdash; and a straight answer on <b>repair or replace</b>.
+            Free, no signup.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-medapp" href="https://app.myeverydaydriver.com">app.myeverydaydriver.com</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ PAGES ============ -->
+  <section class="section">
+    <div class="section-label">This site</div>
+    <div class="grid">
+
+      <article class="item">
+        <img class="shot" src="shots/launching.jpg" alt="The launching hub" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">What I'm building</span>
+            <span class="tag">Live</span>
+          </div>
+          <p class="item-what">The running view &mdash; every active venture, what shipped, what
+            is next. The forward-looking half of this page.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-launching" href="/launching">/launching</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="item">
+        <img class="shot" src="shots/start.jpg" alt="The start page" width="960" height="600" loading="lazy">
+        <div class="item-body">
+          <div class="item-top">
+            <span class="item-name">Start here</span>
+            <span class="tag">Live</span>
+          </div>
+          <p class="item-what">Where a scanned QR lands. One short video, one ask, and a written
+            version underneath for anyone whose signal gives out.</p>
+          <div class="item-links">
+            <a class="plausible-event-name=work-start" href="/start">/start</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ THE HONEST NOTE ============ -->
+  <section class="section">
+    <div class="section-label">What this page is not</div>
+    <div class="note">
+      <p><strong>This is owned work, not a client list.</strong> Everything above is something I
+      built and run myself &mdash; my own businesses, my own products, my own sites. No logos
+      borrowed, no engagements implied, no case studies for work that was a conversation rather
+      than a contract.</p>
+      <p>There is more behind it that is not shown here because it is internal: the operating
+      system these ventures run on, the agents that keep it moving overnight, and the checks that
+      catch them when they are confidently wrong. <strong>If that is the part you care about,
+      ask.</strong></p>
+    </div>
+  </section>
+
+  <div class="footer">
+    <span>Christian Zimmerman &middot; Wake Forest, NC</span>
+    <span><a href="/start">Start here</a> &middot; <a href="/launching">What I'm building</a></span>
+  </div>
+
+</div>
+
+<script>if (window.plausible) window.plausible('work-view');</script>
+
+</body>
+</html>
