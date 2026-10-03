@@ -445,11 +445,11 @@ body {
   <!-- CONTACT -->
   <div class="section-label">Contact</div>
 
-  <a href="mailto:hello@zbdos.com" class="link-card" data-venture="personal" id="contact-card">
+  <a href="mailto:hello@chriszimmerman.org" class="link-card" data-venture="personal" id="contact-card">
     <span class="link-icon"><svg class="cz-icon" viewBox="0 0 24 24" role="img" aria-label="Email"><use href="assets/cz-icons.svg#cz-email"></use></svg></span>
     <div class="link-text">
       <div class="link-title">Email</div>
-      <div class="link-desc" id="contact-email-display">hello@zbdos.com (click to copy or open in email app)</div>
+      <div class="link-desc" id="contact-email-display">hello@chriszimmerman.org (click to copy or open in email app)</div>
     </div>
     <span class="link-arrow">→</span>
   </a>
@@ -482,11 +482,11 @@ body {
     card.addEventListener('click', function (e) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         e.preventDefault();
-        navigator.clipboard.writeText('hello@zbdos.com').then(function () {
+        navigator.clipboard.writeText('hello@chriszimmerman.org').then(function () {
           var display = document.getElementById('contact-email-display');
           if (!display) return;
           var original = display.textContent;
-          display.textContent = '✓ hello@zbdos.com copied — paste into your email';
+          display.textContent = '✓ hello@chriszimmerman.org copied — paste into your email';
           setTimeout(function () { display.textContent = original; }, 2800);
         }).catch(function () {
           // Clipboard failed — allow default mailto to fire
