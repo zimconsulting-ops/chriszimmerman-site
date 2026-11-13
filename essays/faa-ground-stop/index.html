@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The FAA stopped every departure today — Christian Zimmerman</title>
+<meta name="description" content="What the FAA has said so far, what is only reported, and what it means if you are flying out of RDU.">
+<link rel="canonical" href="https://chriszimmerman.org/essays/faa-ground-stop/">
+<meta property="og:title" content="The FAA stopped every departure today">
+<meta property="og:description" content="What the FAA has said so far, what is only reported, and what it means if you are flying out of RDU.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chriszimmerman.org/essays/faa-ground-stop/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The FAA stopped every departure today">
+<meta name="twitter:description" content="What the FAA has said so far, what is only reported, and what it means if you are flying out of RDU.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Privacy-friendly analytics by Plausible (tagged events + outbound links) -->
+<script defer data-domain="chriszimmerman.org" src="https://plausible.io/js/script.tagged-events.outbound-links.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --bg:#0D1117; --bg2:#161B22; --rule:#21262D;
+  --txt1:#E8E4DC; --txt2:#9CA3AF; --txt3:#8A919D; /* was #6B7280 = 3.58:1 on --bg2, FAILED AA body. It carried .link-desc on every link row, plus .section-label, .location and .footer -- all under 13px, so the 3:1 large-text exemption never applied. Measured + corrected 2026-09-03. */
+  --gold:#C9922A; --gold-light:#E8B84B; --orange:#E8651A; --white:#fff;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg); color:var(--txt1);
+  font-family:'IBM Plex Sans',sans-serif; font-weight:300;
+  font-size:18px; line-height:1.7; padding:34px 20px 80px;
+}
+.wrap{max-width:680px; margin:0 auto;}
+.back{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--txt3); text-decoration:none; display:inline-block; margin-bottom:34px;
+}
+.back:hover{color:var(--gold);}
+.kicker{
+  font-family:'IBM Plex Mono',monospace; font-size:0.7rem; font-weight:500; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+}
+h1{
+  font-family:'Instrument Serif',serif; font-weight:400; color:var(--white);
+  font-size:2.9rem; line-height:1.08; letter-spacing:-0.01em; margin-bottom:16px;
+}
+.dek{ color:var(--txt2); font-size:1.18rem; line-height:1.5; margin-bottom:22px; }
+.byline{
+  font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.05em;
+  color:var(--txt3); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:12px 0; margin-bottom:36px;
+}
+.accent{ width:40px; height:3px; background:var(--gold); border-radius:2px; margin:0 0 36px; }
+article p{ margin:0 0 22px; }
+article h2{
+  font-family:'IBM Plex Sans',sans-serif; font-weight:600; color:var(--white);
+  font-size:1.35rem; line-height:1.25; margin:40px 0 14px; letter-spacing:-0.01em;
+}
+article strong{ color:var(--white); font-weight:600; }
+article ul{ margin:0 0 22px; padding-left:22px; }
+article li{ margin:0 0 9px; }
+figure{ margin:34px 0; }
+figure img{ width:100%; height:auto; border-radius:12px; border:1px solid var(--rule); display:block; }
+figcaption{
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--txt3);
+  margin-top:10px; line-height:1.45; text-align:center;
+}
+.screenshot img{ max-width:340px; margin:0 auto; }
+.pull{
+  border-left:3px solid var(--gold); padding:4px 0 4px 20px; margin:30px 0;
+  font-family:'Instrument Serif',serif; font-style:italic; font-size:1.5rem; line-height:1.3; color:var(--txt1);
+}
+.cta{
+  margin-top:54px; background:var(--bg2); border:1px solid var(--rule); border-left:3px solid var(--gold);
+  border-radius:12px; padding:26px 26px 28px;
+}
+.cta .lbl{
+  font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px;
+}
+.cta h3{ font-family:'IBM Plex Sans',sans-serif; font-weight:600; color:var(--white); font-size:1.18rem; margin-bottom:10px; }
+.cta p{ color:var(--txt2); font-size:0.96rem; margin-bottom:18px; }
+.cta-row{ display:flex; flex-wrap:wrap; gap:10px; }
+.btn{
+  display:inline-block; text-decoration:none; font-size:0.9rem; font-weight:500;
+  padding:11px 18px; border-radius:9px; transition:transform .15s, border-color .2s, background .2s;
+}
+.btn-gold{ background:var(--gold); color:#1a1205; }
+.btn-gold:hover{ background:var(--gold-light); transform:translateY(-1px); }
+.btn-ghost{ background:transparent; color:var(--txt1); border:1px solid var(--rule); }
+.btn-ghost:hover{ border-color:var(--gold); color:var(--gold); }
+.foot{
+  margin-top:50px; padding-top:22px; border-top:1px solid var(--rule); text-align:center;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--txt3);
+}
+.foot a{ color:var(--txt3); text-decoration:none; }
+.foot a:hover{ color:var(--gold); }
+@media(max-width:560px){ h1{ font-size:2.2rem; } body{ font-size:17px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="/essays/" class="back">← Essays</a>
+
+  <div class="kicker">Note · November 2026</div>
+  <h1>The FAA stopped every departure today</h1>
+  <p class="dek">What the FAA has said so far, what is only reported, and what it means if you are flying out of RDU.</p>
+  <div class="byline">Christian Zimmerman · November 13, 2026 · updated 5:30 PM ET</div>
+  <div class="accent"></div>
+
+  <article>
+    <p>This afternoon the FAA held every departing flight at every airport in the country. It is only the second time that has happened since 9/11, and the first was in January 2023, when the system pilots use for pre-flight notices went down.</p>
+    <h2>What the FAA has said</h2>
+    <p>The FAA says it ordered the stop for safety, under what it called extraordinary circumstances, and it points to communication problems at several of its Air Route Traffic Control Centers, which are the facilities that handle planes at cruising altitude between airports. Transportation Secretary Sean Duffy said the problem reaches all of those centers and that FAA technicians are working on it. Planes already in the air are still flying, and international flights headed to the US are being handled case by case. Earlier in the afternoon, Chicago's O'Hare and Midway had their own stop for an equipment problem.</p>
+    <h2>What is reported but not confirmed</h2>
+    <p>Homeland Security Secretary Markwayne Mullin told reporters that, as of now, it is a telecommunications outage with no sign yet of an attack (ABC News), which is reassuring but is not a final finding on the cause. An internal Alaska Airlines message seen by CNBC describes radar problems as well as communications, and I have not seen anything that ties this to controller staffing. As I write this there is no word on when the stop will lift.</p>
+    <h2>If you are flying out of RDU</h2>
+    <p>The order covers every US airport, RDU included. Check your airline's app before you leave for the airport, and plan for disruptions that may continue after the stop lifts while airlines get their crews and planes back in place. The FAA posts live status at <a href="https://nasstatus.faa.gov" target="_blank" rel="noopener" style="color:var(--gold)">nasstatus.faa.gov</a>.</p>
+    <h2>A local note</h2>
+    <p>This is the second time in about a month that a communications failure has stopped flights at RDU. On October 12, according to RDU officials as reported by WRAL, an FAA contractor cut a fiber-optic line near the tower during a plumbing repair, and flights there were held off and on until about 9 that night. I will come back to whether the two have anything in common once the FAA says what failed today.</p>
+    <p><strong>Sources:</strong> CNBC and ABC News (Nov 13), WRAL (Oct 12), FAA National Airspace System status.</p>
+  </article>
+
+  <div class="foot">
+    <p><a href="/essays/">More essays</a> · <a href="/">chriszimmerman.org</a> · Wake County, NC</p>
+  </div>
+
+</div>
+</body>
+</html>
