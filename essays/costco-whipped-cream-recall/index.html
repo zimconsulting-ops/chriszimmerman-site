@@ -118,6 +118,37 @@ figcaption{
     <p><strong>Sources:</strong> <a href="https://gdx-assets.costco.com/adobe/assets/urn%3Aaaid%3Aaem%3A8dedd165-f61b-475a-b7bb-5f33f77a4675/original/as/FINAL" target="_blank" rel="noopener" style="color:var(--gold)">Alamance Foods recall notice to Costco members</a> (Nov 7), <a href="https://www.wral.com/consumer/kirkland-whipped-cream-costco-recalled-november-2026/" target="_blank" rel="noopener" style="color:var(--gold)">WRAL (Nov 12)</a>.</p>
   </article>
 
+  <!-- digest-interest test (added 2026-11-17). Netlify form; entries deleted by 2027-01-31. -->
+  <style>
+  .di{ margin-top:48px; background:#161B22; border:1px solid #21262D; border-left:3px solid #C9922A; border-radius:12px; padding:24px 24px 22px; }
+  .di-lbl{ font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:#C9922A; margin-bottom:8px; }
+  .di h3{ font-family:'IBM Plex Sans',sans-serif; font-weight:600; color:#fff; font-size:1.12rem; margin:0 0 8px; }
+  .di p{ color:#9CA3AF; font-size:0.95rem; margin:0 0 14px; }
+  .di form{ display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; }
+  .di-field{ display:flex; flex-direction:column; flex:1 1 220px; }
+  .di-field label{ font-size:0.85rem; color:#E8E4DC; margin-bottom:4px; }
+  .di input[type=email]{ font-size:16px; min-height:44px; padding:10px 12px; border-radius:9px; border:1px solid #3a414b; background:#0D1117; color:#E8E4DC; }
+  .di button{ font-size:16px; min-height:44px; padding:10px 18px; border:0; border-radius:9px; background:#C9922A; color:#1a1205; font-weight:600; cursor:pointer; }
+  .di button:hover{ background:#E8B84B; }
+  .di .di-fine{ font-size:0.8rem; color:#8A919D; margin:12px 0 0; }
+  .di .di-fine a{ color:#C9922A; }
+  .di .di-hp{ position:absolute; left:-9999px; }
+  </style>
+  <section class="di" aria-labelledby="di-h">
+    <div class="di-lbl">Want these by email?</div>
+    <h3 id="di-h">A short daily email of local alerts and notes</h3>
+    <p id="di-desc">We'll build it if enough people ask. Leave your address and we'll email you once, only to ask if you want it. This does not sign you up. We delete every address from this form by January 31, 2027.</p>
+    <form name="digest-interest" method="POST" action="/digest/thanks/" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="digest-interest">
+      <input type="hidden" name="page" value="costco-whipped-cream-recall">
+      <p class="di-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="di-field"><label for="di-email">Email address</label>
+      <input type="email" id="di-email" name="email" required autocomplete="email" aria-describedby="di-desc di-fine"></div>
+      <button type="submit" class="plausible-event-name=digest-interest-submit">Tell me if it launches</button>
+    </form>
+    <p class="di-fine" id="di-fine">Held by Passion For Pixels, LLC on Netlify, used only for that one email. <a href="/digest/privacy/">Privacy</a></p>
+  </section>
+
   <div class="foot">
     <p><a href="/essays/">More essays</a> · <a href="/">chriszimmerman.org</a> · Wake County, NC</p>
   </div>
