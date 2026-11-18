@@ -6,3 +6,23 @@
 
 [build.processing.html]
   pretty_urls = true
+
+[[redirects]]
+  from = "/essays/costco-whipped-cream-recall"
+  to = "/news/costco-whipped-cream-recall/"
+  status = 301
+
+[[redirects]]
+  from = "/essays/costco-whipped-cream-recall/"
+  to = "/news/costco-whipped-cream-recall/"
+  status = 301
+
+[[redirects]]
+  from = "/essays/faa-ground-stop"
+  to = "/news/faa-ground-stop/"
+  status = 301
+
+[[redirects]]
+  from = "/essays/faa-ground-stop/"
+  to = "/news/faa-ground-stop/"
+  status = 301
